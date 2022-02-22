@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="quicksort.css">
+    <meta charset="UTF-8">
+    <title>quicksort</title>
+    <script src="quicksort.js"></script>
+</head>
+<body>
+<button class = "btn" onclick="randgen()">Click Me</button>
+<div id ="container">
+</div>
+<button class = "btn" onclick="sortleft()">quicksort</button>
+<button class = "btn" onclick="sortright()">insertion sort</button>
+<div id ="code">
+    <p class = "code"><H1>
+    BASIC PLAN:<br/>
+    </H1>
+    <b>•random shuffle the array<br/></b>
+    <b>•partition so that,for some j<br/></b>
+    <b>---entry a[j] is in place<br/></b>
+    <b>---no large entry to the left of j<br/></b>
+    <b>---no smaller entry to the right of j<br/></b>
+    <b>•sort each piece recursively<br/></b>
+    <b>•optimize running time for insertion sort of small arrays<br/></b>
+    </p>
+</div>
+</body>
+</html>
