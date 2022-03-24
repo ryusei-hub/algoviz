@@ -1,0 +1,90 @@
+html { 
+  background: linear-gradient(to top,rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(two.jpg); no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+.form{
+	width: 10%;
+  	margin: 0 auto;
+	background: linear-gradient(to top,rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
+	padding: 20px;
+}
+
+.form1{
+	width: 17%;
+	margin: auto;
+	background: linear-gradient(to top,rgba(0,0,0,0.8)50%,rgba(0,0,0,0.8)50%);
+	border-radius: 10px;
+	padding: 20px;
+}
+
+.form1 input{
+	width: 240px;
+	height: 30px;
+	background: transparent;
+	border-radius: 1px solid #ff7200;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	color: white;
+	font-size: 15px;
+	letter-spacing: 1px;
+	position: relative;
+	margin-top: 30px;
+	font-family: sans-serif;
+}
+
+.form1 input:focus{
+	outline: none;
+}
+
+::placeholder{
+	color: dimgray;
+}
+
+.btn{
+	width: 240px;
+	height: 35px;
+	background: #ff7200;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-top: 30px;
+	font-size: 18px;
+	color: white;
+	transition: .4s ease-in-out;
+	align-content: center;
+}
+
+.btn:hover{
+	background: white;
+	color: #ff7200;
+	height: 50px;
+}
+
+.btn a{
+	text-decoration: none;
+	color: #000;
+	font-size: 17px;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+a:link { text-decoration: none; }
+
+.banner{
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(AlgovizBanner.png);
+	background-position: 0% 40%;
+  	background-size: cover;
+  	position: absolute;
+  	height: 40%;
+  	width: 100%;
+}
+
+::placeholder{
+	text-align: center;
+}
