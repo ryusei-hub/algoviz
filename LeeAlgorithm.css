@@ -1,0 +1,37 @@
+
+html {
+    text-align: center;
+    font-family: Monaco, serif;
+}
+
+.square {
+    background-color: red;
+    border: 1px solid black;
+}
+
+.color {
+    background-color: blue;
+    border: 2px solid black;
+}
+
+.path {
+    background-color: gold;
+    border: 1px solid black;
+}
+
+.wall {
+    background-color: dimgrey;
+    border: 1px solid black;
+}
+
+.gridContainer {
+    margin-top: 25px;
+    margin-right: 40px;
+    display: inline-grid;
+    grid-template-columns: repeat(16, 2fr);
+    grid-template-rows: repeat(16, 2fr);
+    border: 5px solid black;
+    border-radius: 5px;
+    height: 900px;
+    width: 900px;
+}
