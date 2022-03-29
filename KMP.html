@@ -45,7 +45,7 @@
         }
         function graphconstruct(dfa,substring,strinput){
             for(a=0;a<6;a++){
-                var myPoint = new Point(100+a*100,100);
+                var myPoint = new Point(50+a*100,100);
                 var myCircle = new Path.Circle(myPoint, 10);
                 myCircle.strokeColor = 'black';
                 myCircle.fillColor = 'black';
@@ -235,10 +235,11 @@
         </div>
     </nav>
     <canvas id="myCanvas" width =800 height=800 class="form" style="background-color: white"></canvas>
-    <button onclick="gen()" id = "animation">animation</button>
+    <button class="btn btn-outline-primary my-2 my-sm-0" style="position: absolute;
+  left: 100px; top: 710px;" onclick="gen()" id = "animation">animation</button>
     <!-- <img src="white.jpg" class="form2">  -->
     <div class="form-group">
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Construct a DFA using the search string. For each state j, if match then go to the next state if not match then calculate the state should be in and go back.</textarea>
     </div>
 
 
