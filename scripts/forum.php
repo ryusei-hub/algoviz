@@ -96,26 +96,31 @@
                         $conn = Connect();
                         $sql = sprintf("INSERT INTO forum (userID, title, description) VALUES (1, '%s', '%s')", $topic_sql, $description_sql);
                         $conn->exec($sql);
-                        $conn = null;
 
                         echo '<table style="width:30em; background:white; position:absolute; left:12em; top:13em;"  border="2em">
-                                <tr>
-                                <th style="color:dark-grey">Topic</th>
-                                <th style="color:dark-grey">Description</th>
-                                </tr>';
+                                  <tr>
+                                      <th style="color:dark-grey">Topic</th>
+                                      <th style="color:dark-grey">Description</th>
+                                  </tr>';
 
+                        $stmt = $conn->query("SELECT * FROM forum");
+                        $stmt->setFetchMode(PDO::FETCH_NUM);
+                        foreach ($stmt as $row) {
                             echo '<tr>';
-                                echo '<td class="leftpart">';
-                                    echo '<h3>';
-                                    echo '<a href="../topic.php?data=<?=$topic?>">';
-                                    echo $topic;
-                                    echo '</a>';
-                                    echo '</h3>';
-                                echo '</td>';
-                                echo '<td style="color:black">';
-                                echo substr($description, 0, 30);
-                                echo '</td>';
+                            echo '<td class="leftpart">';
+                            echo '<h3>';
+                            echo '<a href="../topic.php?data=<?=$topic?>">';
+                            echo $row[2];
+                            echo '</a>';
+                            echo '</h3>';
+                            echo '</td>';
+                            echo '<td style="color:black">';
+                            echo substr($row[3], 0, 30);
+                            echo '</td>';
                             echo '</tr>';
+                        }
+
+                        $conn = null;
                         ?><br>
                     </form>
                 </div>
