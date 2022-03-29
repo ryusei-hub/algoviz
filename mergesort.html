@@ -102,11 +102,11 @@
   </script>
   <script type="text/javascript">
     window.globals = {}
-    window.onload = function(){
-      document.getElementById('sort').onclick = function(){
+    window.onload = function () {
+      document.getElementById('sort').onclick = function () {
         window.globals.nodeadd();
       }
-      document.getElementById('bfs').onclick = function(){
+      document.getElementById('bfs').onclick = function () {
       }
     }
   </script>
@@ -133,7 +133,7 @@
           <!-- DROP DOWN START ........../ -->
           <li class="nav-item active dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false" style="font-size: 20px; font-family:Helvetica;">
+              aria-haspopup="true" aria-expanded="false" style="font-size: 20px; font-family:Helvetica;">
               Trees
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -143,7 +143,7 @@
           </li>
           <li class="nav-item active dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false" style="font-size: 20px; font-family:Helvetica;">
+              aria-haspopup="true" aria-expanded="false" style="font-size: 20px; font-family:Helvetica;">
               Sorts
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -153,7 +153,7 @@
           </li>
           <li class="nav-item active dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false" style="font-size: 20px; font-family:Helvetica;">
+              aria-haspopup="true" aria-expanded="false" style="font-size: 20px; font-family:Helvetica;">
               Searching
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -164,7 +164,7 @@
           <!-- LAST DROP DOWN /////////////////// -->
           <li class="nav-item active dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false" style="font-size: 20px; font-family:Helvetica;">
+              aria-haspopup="true" aria-expanded="false" style="font-size: 20px; font-family:Helvetica;">
               Others
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -174,7 +174,10 @@
                         <a class="dropdown-item" href="#">Something else here</a> -->
             </div>
           </li>
-
+          <li class="nav-item active">
+            <a class="nav-link" href="scripts/forum.php" aria-haspopup="true" aria-expanded="false"
+              style="font-size: 20px; font-family:Helvetica;">Forum</a>
+          </li>
         </ul>
 
       </div>
@@ -186,13 +189,14 @@
 
     </div>
   </nav>
-<!--  <img src="assets/white.jpg" class="form">-->
-  <canvas id="myCanvas" width =800 height=400 class="form" style="background-color: white"></canvas>
+  <!--  <img src="assets/white.jpg" class="form">-->
+  <canvas id="myCanvas" width=800 height=400 class="form" style="background-color: white"></canvas>
   <button class="btn btn-outline-primary my-2 my-sm-0" style="position: absolute;
-  left: 100px; top: 710px;" onclick="gen()" id = "sort">sort</button>
+  left: 100px; top: 710px;" onclick="gen()" id="sort">sort</button>
   <!-- <img src="white.jpg" class="form2">  -->
   <div class="form-group">
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">Divide array into two halves. Recursively sort each half, merge two halves.</textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1"
+      rows="3">Divide array into two halves. Recursively sort each half, merge two halves.</textarea>
   </div>
 
 
