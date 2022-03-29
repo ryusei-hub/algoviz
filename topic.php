@@ -5,17 +5,17 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" type="text/css" href="../index.css">
+        <link rel="stylesheet" type="text/css" href="index.css">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
 
-    <body style="background:linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../assets/two.jpg);">
+    <body style="background:linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(assets/two.jpg);">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand " href="../home.html" style="font-weight: bold;font-size:25px; color: #3271a8;">ALGOVIZ</a>
-            <a href="../account1.html">
-            <img class="user-icon" src="../assets/icon.png" alt="user icon">
+            <a class="navbar-brand " href="home.html" style="font-weight: bold;font-size:25px; color: #3271a8;">ALGOVIZ</a>
+            <a href="account1.html">
+            <img class="user-icon" src="assets/icon.png" alt="user icon">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,8 +34,8 @@
                             Trees
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../rbt.html">red black tree</a>
-                            <a class="dropdown-item" href="../bst.html">binary search tree</a>
+                            <a class="dropdown-item" href="rbt.html">red black tree</a>
+                            <a class="dropdown-item" href="bst.html">binary search tree</a>
                             </div>
                         </li>
                         <li class="nav-item active dropdown">
@@ -44,8 +44,8 @@
                             Sorts
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../mergesort.html">Merge sort</a>
-                            <a class="dropdown-item" href="../quicksortv2.html">Quick sort</a>
+                            <a class="dropdown-item" href="mergesort.html">Merge sort</a>
+                            <a class="dropdown-item" href="quicksortv2.html">Quick sort</a>
                             </div>
                         </li>
                         <li class="nav-item active dropdown">
@@ -54,8 +54,8 @@
                             Searching
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../bst.html">breadth first search</a>
-                            <a class="dropdown-item" href="../dfs.html">depth first search</a>
+                            <a class="dropdown-item" href="bst.html">breadth first search</a>
+                            <a class="dropdown-item" href="dfs.html">depth first search</a>
                             </div>
                         </li>
                         <!-- LAST DROP DOWN /////////////////// -->
@@ -65,8 +65,8 @@
                             Others
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="../prim.html">Prim</a>
-                            <a class="dropdown-item" href="../KMP.html">KMP</a>
+                            <a class="dropdown-item" href="prim.html">Prim</a>
+                            <a class="dropdown-item" href="KMP.html">KMP</a>
                             <!-- <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">Something else here</a> -->
                             </div>
@@ -80,52 +80,31 @@
                 </form>
             </div>
         </nav>
-
+    
         <div class="content">
-                <div class="container">
-                    <form method="post" action="homeforum.php?">
-                        <?php
-                        include "connect.php";
-
-                        $topic = $_POST["name_topic"];
-                        $description = $_POST["post_text"];
-
-                        $topic_sql = str_replace("'", "''", $topic);
-                        $description_sql = str_replace("'", "''", $description);
-
-                        $conn = Connect();
-                        $sql = sprintf("INSERT INTO forum (userID, title, description) VALUES (1, '%s', '%s')", $topic_sql, $description_sql);
-                        $conn->exec($sql);
-
-                        echo '<table style="width:30em; background:white; position:absolute; left:12em; top:13em;"  border="2em">
-                                  <tr>
-                                      <th style="color:dark-grey">Topic</th>
-                                      <th style="color:dark-grey">Description</th>
-                                  </tr>';
-
-                        $stmt = $conn->query("SELECT * FROM forum");
-                        $stmt->setFetchMode(PDO::FETCH_NUM);
-                        foreach ($stmt as $row) {
-                            echo '<tr>';
-                            echo '<td class="leftpart">';
-                            echo '<h3>';
-                            echo '<a href="../topic.php?data=<?=$topic?>">';
-                            echo $row[2];
-                            echo '</a>';
-                            echo '</h3>';
-                            echo '</td>';
-                            echo '<td style="color:black">';
-                            echo substr($row[3], 0, 30);
-                            echo '</td>';
-                            echo '</tr>';
-                        }
-
-                        $conn = null;
-                        ?><br>
+            <div class="container">
+                <div class="form">
+                    <label for="inputTopic"></label>
+                    <p style="color:white" id="Title" class="title"><strong></strong>
+                    <label>
+                        <p name="name_topic" class="form-control"  id="inputTopic" aria-describedby="inputHelp">Topic goes here</p>
+                        <p name="post_text" class="form-control" value="text" aria-describedby="inputHelp" rows=8 cols=97 wrap=virtual>Description goes here</p>
+                    </label> <small id="inputHelp" class="form-text text-muted"></small>
+                    <br><br><input name="reply" class="form-control"  aria-describedby="inputHelp" placeholder="Add an entry"></input>
+                    <br><input type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg"></input><br><br>
+                    <form method="post">
+                        <button id="replyButton" class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="reply" value="insert">Reply</button><br><br>
                     </form>
                 </div>
-                <button id="buttonTopics" style="position:absolute; left:45em; top:20em;" class="btn btn-outline-primary my-2 my-sm-0" type="submit">Add Topic</button><br>
             </div>
+            <?php
+                if(isset($_POST['reply'])) {
+                    echo '<input name="reply" class="form-control"  aria-describedby="inputHelp" placeholder="Add an entry"></input>';
+                    echo '<br><input type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg"></input><br><br>';
+                    echo '<button class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="reply" value="insert">Reply</button><br>';
+                }
+            ?>
+        </div>
         
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -140,65 +119,48 @@
 
 </html>
 
+
 <!-- 
-  {
-    if(mysql_num_rows($result) == 0)
+include 'connect.php';
+include 'header.php';
+ 
+if($_SERVER['REQUEST_METHOD'] != 'POST')
+{
+    //someone is calling the file directly, which we don't want
+    echo 'This file cannot be called directly.';
+}
+else
+{
+    //check for sign in status
+    if(!$_SESSION['signed_in'])
     {
-        echo 'This category does not exist.';
+        echo 'You must be signed in to post a reply.';
     }
     else
     {
-        //display category data
-        while($row = mysql_fetch_assoc($result))
-        {
-            echo '<h2>Topics in ′' . $row['cat_name'] . '′ category</h2>';
-        }
-     
-        //do a query for the topics
-        $sql = "SELECT  
-                    topic_id,
-                    topic_subject,
-                    topic_date,
-                    topic_cat
-                FROM
-                    topics
-                WHERE
-                    topic_cat = " . mysql_real_escape_string($_GET['id']);
-         
+        //a real user posted a real reply
+        $sql = "INSERT INTO 
+                    posts(post_content,
+                          post_date,
+                          post_topic,
+                          post_by) 
+                VALUES ('" . $_POST['reply-content'] . "',
+                        NOW(),
+                        " . mysql_real_escape_string($_GET['id']) . ",
+                        " . $_SESSION['user_id'] . ")";
+                         
         $result = mysql_query($sql);
-         
+                         
         if(!$result)
         {
-            echo 'The topics could not be displayed, please try again later.';
+            echo 'Your reply has not been saved, please try again later.';
         }
         else
         {
-            if(mysql_num_rows($result) == 0)
-            {
-                echo 'There are no topics in this category yet.';
-            }
-            else
-            {
-                //prepare the table
-                echo '<table border="1">
-                      <tr>
-                        <th>Topic</th>
-                        <th>Created at</th>
-                      </tr>'; 
-                     
-                while($row = mysql_fetch_assoc($result))
-                {               
-                    echo '<tr>';
-                        echo '<td class="leftpart">';
-                            echo '<h3><a href="topic.php?id=' . $row['topic_id'] . '">' . $row['topic_subject'] . '</a><h3>';
-                        echo '</td>';
-                        echo '<td class="rightpart">';
-                            echo date('d-m-Y', strtotime($row['topic_date']));
-                        echo '</td>';
-                    echo '</tr>';
-                }
-            }
+            echo 'Your reply has been saved, check out <a href="topic.php?id=' . htmlentities($_GET['id']) . '">the topic</a>.';
         }
     }
-  }
+}
+ 
+include 'footer.php'; 
 -->

@@ -1,0 +1,50 @@
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+    font-family: Arial;
+
+}
+.user-icon {
+    
+    width: 1.875em;
+    left:0.625em;
+    border-width: 0.3em;
+    border-color: black;
+}
+
+.form {
+	width: 700px;
+	height: 700px;
+	position: absolute;
+	left: 100px;
+	top: 200px;
+	border-radius: 10px;
+
+}
+.form-group {
+	width: 500px;
+	height: 600px;
+	position: absolute;
+	left: 1200px;
+	top: 200px;
+	border-radius: 10px;
+}
+
+.container {
+	position:absolute; 
+	left:10em; 
+	top:-3em;
+}
+
+.reply{
+	position:absolute; 
+	left:15em; 
+	top:20em;
+}
+
+#buttonTopics {
+	position:absolute; 
+	left:15em; 
+	top:2000em;
+}
