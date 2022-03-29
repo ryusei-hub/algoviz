@@ -85,34 +85,37 @@
                 <div class="container">
                     <form method="post" action="homeforum.php?">
                         <?php
-                            include "connect.php";
+                        include "connect.php";
 
-                            $topic = $_POST["name_topic"];
-                            $description = $_POST["post_text"];
-                            $conn = Connect();
-                            $sql = sprintf("INSERT INTO forum (userID, title, description) VALUES (1, '%s', '%s')", $topic, $description);
-                            echo "<script>console.log('$sql')</script>";
-                            $conn->exec($sql);
-                            $conn = null;
+                        $topic = $_POST["name_topic"];
+                        $description = $_POST["post_text"];
 
-                            echo '<table style="width:30em; background:white; position:absolute; left:12em; top:13em;"  border="2em">
-                                    <tr>
-                                    <th style="color:dark-grey">Topic</th>
-                                    <th style="color:dark-grey">Description</th>
-                                    </tr>';
+                        $topic_sql = str_replace("'", "''", $topic);
+                        $description_sql = str_replace("'", "''", $description);
 
-                                echo '<tr>';
-                                    echo '<td class="leftpart">';
-                                        echo '<h3>';
-                                        echo '<a href="../topic.php?data=<?=$topic?>">';
-                                        echo $topic;
-                                        echo '</a>';
-                                        echo '</h3>';
-                                    echo '</td>';
-                                    echo '<td style="color:black">';
-                                    echo substr($description, 0, 30);
-                                    echo '</td>';
-                                echo '</tr>';
+                        $conn = Connect();
+                        $sql = sprintf("INSERT INTO forum (userID, title, description) VALUES (1, '%s', '%s')", $topic_sql, $description_sql);
+                        $conn->exec($sql);
+                        $conn = null;
+
+                        echo '<table style="width:30em; background:white; position:absolute; left:12em; top:13em;"  border="2em">
+                                <tr>
+                                <th style="color:dark-grey">Topic</th>
+                                <th style="color:dark-grey">Description</th>
+                                </tr>';
+
+                            echo '<tr>';
+                                echo '<td class="leftpart">';
+                                    echo '<h3>';
+                                    echo '<a href="../topic.php?data=<?=$topic?>">';
+                                    echo $topic;
+                                    echo '</a>';
+                                    echo '</h3>';
+                                echo '</td>';
+                                echo '<td style="color:black">';
+                                echo substr($description, 0, 30);
+                                echo '</td>';
+                            echo '</tr>';
                         ?><br>
                     </form>
                 </div>
