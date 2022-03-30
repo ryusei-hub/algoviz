@@ -37,8 +37,8 @@
     function LogIn() {
         $conn = Connect();
 
-        $username = $_POST['uname2'];
-        $password = $_POST['psw2'];
+        $username = $_POST['uname1'];
+        $password = $_POST['psw1'];
 
         $stmt = $conn->query("SELECT name, password FROM users");
         $stmt->setFetchMode(PDO::FETCH_NUM);
@@ -53,7 +53,7 @@
         }
     }
 
-    if (!empty($_POST['uname2'])) {
+    if (!empty($_POST['uname1'])) {
         LogIn();
     } else if (!empty($_POST['uname'])) {
         SignUp();

@@ -87,15 +87,7 @@
                         <?php
                         include "connect.php";
 
-                        $topic = $_POST["name_topic"];
-                        $description = $_POST["post_text"];
-
-                        $topic_sql = str_replace("'", "''", $topic);
-                        $description_sql = str_replace("'", "''", $description);
-
                         $conn = Connect();
-                        $sql = sprintf("INSERT INTO forum (name, title, description) VALUES ('test name', '%s', '%s')", $topic_sql, $description_sql);
-                        $conn->exec($sql);
 
                         echo '<table style="width:30em; background:white; position:absolute; left:12em; top:13em;"  border="2em">
                                   <tr>
@@ -120,7 +112,24 @@
                             echo '</tr>';
                         }
 
-                        $conn = null;
+                            $conn = null;
+
+                        function NewTopic()
+                        {
+                            $topic = $_POST["name_topic"];
+                            $description = $_POST["post_text"];
+
+                            $topic_sql = str_replace("'", "''", $topic);
+                            $description_sql = str_replace("'", "''", $description);
+
+                            $conn = Connect();
+                            $sql = sprintf("INSERT INTO forum (name, title, description) VALUES ('test name', '%s', '%s')", $topic_sql, $description_sql);
+                            $conn->exec($sql);
+                        }
+
+                        if (!empty($_POST["name_topic"])) {
+                            NewTopic();
+                        }
                         ?><br>
                     </form>
                 </div>
