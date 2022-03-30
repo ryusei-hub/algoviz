@@ -12,9 +12,58 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
-<body >
+<body>
+
+<?php
+    include 'scripts/connect.php';
+
+    function SignUp() {
+        $conn = Connect();
+
+        $username = $_POST['uname'];
+        $email = $_POST['email'];
+        $password = $_POST['psw'];
+        $re_password = $_POST['re-psw'];
+
+        $sql = sprintf("
+    INSERT INTO users (name, password, email)
+    VALUES ('%s', '%s', '%s')
+    ", $username, $password, $email);
+
+        $conn->exec($sql);
+        $conn = null;
+    }
+
+    function LogIn() {
+        $conn = Connect();
+
+        $username = $_POST['uname2'];
+        $password = $_POST['psw2'];
+
+        $stmt = $conn->query("SELECT name, password FROM users");
+        $stmt->setFetchMode(PDO::FETCH_NUM);
+
+        foreach ($stmt as $row) {
+            $curr_username = $row[0];
+            $curr_password = $row[1];
+
+            if ($curr_username == $username and $curr_password == $password) {
+                echo "<script>console.log('Logged in!!')</script>";
+            }
+        }
+    }
+
+    if (!empty($_POST['uname2'])) {
+        LogIn();
+    } else if (!empty($_POST['uname'])) {
+        SignUp();
+    } else {
+        echo "<script>console.log('goofy')</script>";
+    }
+
+?>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand " href="home.html" style="font-weight: bold;font-size:25px; color: #3271a8;">ALGOVIZ</a>
+    <a class="navbar-brand " href="home.php" style="font-weight: bold;font-size:25px; color: #3271a8;">ALGOVIZ</a>
     <a href="account1.html">
       <img class="user-icon" src="assets/icon.png" alt="user icon">
     </a>
@@ -33,8 +82,8 @@
               Trees
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="rbt.html">red black tree</a>
-              <a class="dropdown-item" href="bst.html">binary search tree</a>
+              <a class="dropdown-item" href="rbt.html">Red Black Tree</a>
+              <a class="dropdown-item" href="bst.html">Binary Search Tree</a>
             </div>
           </li>
           <li class="nav-item active dropdown">
@@ -53,8 +102,8 @@
               Searching
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="bst.html">breadth first search</a>
-              <a class="dropdown-item" href="dfs.html">depth first search</a>
+              <a class="dropdown-item" href="bst.html">Breadth First Search</a>
+              <a class="dropdown-item" href="dfs.html">Depth First Search</a>
             </div>
           </li>
           <!-- LAST DROP DOWN -->

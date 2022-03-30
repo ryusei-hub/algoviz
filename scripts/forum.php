@@ -13,7 +13,7 @@
 
     <body style="background:linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../assets/two.jpg);">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand " href="../home.html" style="font-weight: bold;font-size:25px; color: #3271a8;">ALGOVIZ</a>
+            <a class="navbar-brand " href="../home.php" style="font-weight: bold;font-size:25px; color: #3271a8;">ALGOVIZ</a>
             <a href="../account1.html">
             <img class="user-icon" src="../assets/icon.png" alt="user icon">
             </a>
@@ -94,7 +94,7 @@
                         $description_sql = str_replace("'", "''", $description);
 
                         $conn = Connect();
-                        $sql = sprintf("INSERT INTO forum (userID, title, description) VALUES (1, '%s', '%s')", $topic_sql, $description_sql);
+                        $sql = sprintf("INSERT INTO forum (name, title, description) VALUES ('test name', '%s', '%s')", $topic_sql, $description_sql);
                         $conn->exec($sql);
 
                         echo '<table style="width:30em; background:white; position:absolute; left:12em; top:13em;"  border="2em">
