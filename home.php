@@ -82,8 +82,8 @@
               Trees
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="rbt.html">red black tree</a>
-              <a class="dropdown-item" href="bst.html">binary search tree</a>
+              <a class="dropdown-item" href="rbt.html">Red Black Tree</a>
+              <a class="dropdown-item" href="bst.html">Binary Search Tree</a>
             </div>
           </li>
           <li class="nav-item active dropdown">
@@ -102,8 +102,8 @@
               Searching
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="bst.html">breadth first search</a>
-              <a class="dropdown-item" href="dfs.html">depth first search</a>
+              <a class="dropdown-item" href="bst.html">Breadth First Search</a>
+              <a class="dropdown-item" href="dfs.html">Depth First Search</a>
             </div>
           </li>
           <!-- LAST DROP DOWN -->
