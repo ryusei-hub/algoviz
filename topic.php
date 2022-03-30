@@ -81,7 +81,7 @@
             </div>
         </nav>
     
-        <div class="content">
+        <div id="mobile" class="content">
             <div class="container">
                 <div class="form">
                     <label for="inputTopic"></label>
@@ -90,31 +90,39 @@
                         <p name="name_topic" class="form-control"  id="inputTopic" aria-describedby="inputHelp">Topic goes here</p>
                         <p name="post_text" class="form-control" value="text" aria-describedby="inputHelp" rows=8 cols=97 wrap=virtual>Description goes here</p>
                     </label> <small id="inputHelp" class="form-text text-muted"></small>
-                    <br><br><input name="reply" class="form-control"  aria-describedby="inputHelp" placeholder="Add an entry"></input>
-                    <br><input type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg"></input><br><br>
                     <form method="post">
-                        <button id="replyButton" class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="reply" value="insert">Reply</button><br><br>
+                        <br><br><input id="postReply" name="replyText" class="form-control"  aria-describedby="inputHelp" placeholder="Add an entry"></input><br>
+                        <button id="replyButton" class="btn btn-outline-primary my-2 my-sm-0" onclick="moveDown()" type="submit" name="reply" value="insert">Reply</button><br><br>
                     </form>
+                    <?php
+                        if(isset($_POST['reply'])) {
+                            $input = $_POST['replyText'];
+                            echo '<p name="new-post" class="form-control"  id="inputTopic" aria-describedby="inputHelp">';
+                            echo $input;
+                            echo '</p>';
+                        }
+                    ?>
                 </div>
             </div>
-            <?php
-                if(isset($_POST['reply'])) {
-                    echo '<input name="reply" class="form-control"  aria-describedby="inputHelp" placeholder="Add an entry"></input>';
-                    echo '<br><input type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg"></input><br><br>';
-                    echo '<button class="btn btn-outline-primary my-2 my-sm-0" type="submit" name="reply" value="insert">Reply</button><br>';
-                }
-            ?>
         </div>
         
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous">
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
             integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous">
+        </script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous">
+        </script>
+        <script>
+            function moveDown(){
+                document.getElementById("mobile").style.marginLeft = "-330px"
+            }
+        </script>
     </body>
 
 </html>

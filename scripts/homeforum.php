@@ -85,7 +85,7 @@
                 <div class="container">
                     <form method="post" action="forum.php?">
                         <div class="form">
-                        <label for="inputTopic"></label>
+                            <label for="inputTopic"></label>
                             <p style="color:white"><strong>Topic Title:</strong><br>
                             <label>
                             <input name="name_topic" id="topic" class="form-control"  id="inputTopic" aria-describedby="inputHelp" placeholder="Add an entry"></input>
@@ -112,6 +112,8 @@
     </body>
 
 </html>
+
+
 <!-- <!doctype html>
 <html lang="en">
   <head>
