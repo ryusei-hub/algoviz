@@ -119,7 +119,7 @@
                             }
 
                             if (empty($param_password) or empty($confirm_password) or !($param_password == $confirm_password)) {
-                                echo printf($err_str, "You entered your passwords incorrectly");
+                                echo sprintf($err_str, "You entered your passwords incorrectly");
                                 return;
                             }
 
