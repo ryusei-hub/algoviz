@@ -86,41 +86,30 @@ body,html {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	min-width: 80rem;
-	height: 30rem;
+	height: 40rem;
+	width: 70rem ;
 	margin: 0 auto;
 	border-radius: 15px;
+
   }
 
 .carousel {
-    
-    margin-top: 130px;
+    position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+/*    padding-top: 40px;
     padding-left: 80px;
     padding-right: 80px;
-	
+    padding-bottom: 40px;*/
+		
 }
-  /* Since positioning the image, we need to help out the caption */
-.carousel-caption {
-    bottom: 3rem;
-    z-index: 10;
-}
-  
-  /* Declare heights because of positioning of img element */
+
+  /*/* Declare heights because of positioning of img element */
 .carousel-item {
     height: 40rem;
     width: 40rem;
-
+    margin: auto;
     background-color: rgba(255, 255, 255, 0);
     
   }
-.carousel-item > img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 80%;
-    /* min-width: 100%; */
-    height: 40rem;
-    margin: 0 auto;
-}
-
