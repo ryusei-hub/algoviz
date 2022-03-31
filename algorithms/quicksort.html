@@ -87,6 +87,7 @@
 
         function updatebar(statusarray2,color) {
             setTimeout(function () {
+                document.getElementById("stepsort").disabled=true;
                 document.getElementById("sort").disabled=true;
                 console.log(statusarray2)
                 blocks[y].strokeColor = "white"
@@ -111,8 +112,7 @@
                 }
             }, 100)
         }
-
-        globals.updategraph = function () {
+        function updat(){
             if (time < 18) {
                 console.log(time)
                 console.log(leftright)
@@ -120,18 +120,56 @@
                 updatebar(quickstatus[time],leftright[time])
                 time++
             }else if(time == 19){
-                document.getElementById("sort").disabled=true;
+
             }
+        }
+        function updat1(){
+            if (time < 18) {
+                console.log(time)
+                console.log(leftright)
+                y = 0
+                updatebar(quickstatus[time],leftright[time])
+                time++
+            }else if(time == 19){
+                document.getElementById("stepsort").disabled=true;
+            }
+        }
+        globals.updategraph = function () {
+            updat1()
+        }
+        globals.totalsort = function () {
+            setTimeout(updat,1000)
+            setTimeout(updat,10000)
+            setTimeout(updat,20000)
+            setTimeout(updat,30000)
+            setTimeout(updat,40000)
+            setTimeout(updat,50000)
+            setTimeout(updat,60000)
+            setTimeout(updat,70000)
+            setTimeout(updat,80000)
+            setTimeout(updat,90000)
+            setTimeout(updat,100000)
+            setTimeout(updat,110000)
+            setTimeout(updat,120000)
+            setTimeout(updat,130000)
+            setTimeout(updat,140000)
+            setTimeout(updat,150000)
+            setTimeout(updat,160000)
+            setTimeout(updat,170000)
+            setTimeout(updat,180000)
+            setTimeout(updat,190000)
+
         }
         console.log(quickstatus)
     </script>
     <script type="text/javascript">
         window.globals = {}
         window.onload = function () {
-            document.getElementById('sort').onclick = function () {
+            document.getElementById('stepsort').onclick = function () {
                 window.globals.updategraph();
             }
-            document.getElementById('bfs').onclick = function () {
+            document.getElementById('sort').onclick = function () {
+                window.globals.totalsort();
             }
         }
     </script>
@@ -219,11 +257,15 @@
     </div>
 </nav>
 <canvas class="form" height=800 id="myCanvas" style="background-color: white" width=800></canvas>
-<button class="btn btn-outline-primary my-2 my-sm-0" id="sort" onclick="gen()" style="position: absolute;
+<button class="btn btn-outline-primary my-2 my-sm-0" id="stepsort" onclick="gen()" style="position: absolute;
   left: 10em; top: 710px;">sort
 </button>
+<button class="btn btn-outline-primary my-2 my-sm-0" id="sort" onclick="gen()" style="position: absolute;
+  left: 14em; top: 710px;">totalsort
+</button>
+
 <button class="btn btn-outline-primary my-2 my-sm-0" style="position: absolute;
-  left: 14em; top: 710px;" onclick="window.location.reload();" id = "refresh">refresh</button>
+  left: 20em; top: 710px;" onclick="window.location.reload();" id = "refresh">refresh</button>
 
 <!-- <img src="white.jpg" class="form2">  -->
 <div class="form-group">
