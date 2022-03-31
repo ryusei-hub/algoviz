@@ -28,7 +28,7 @@
 
         function graphgen() {
             for (i = 0; i < 10; i++) {
-                var myPoint = new Point(300, 300) * Point.random();
+                var myPoint = new Point(550, 480) * Point.random();
                 var myCircle = new Path.Circle(myPoint, 10);
                 var overlap = false;
                 for (x = 0; x < i; x++) {
@@ -261,11 +261,13 @@
 </nav>
 <canvas class="form" height=800 id="myCanvas" style="background-color: white" width=800></canvas>
 <button class="btn btn-outline-primary my-2 my-sm-0" id="linegen" onclick="gen()" style="position: absolute;
-  left: 100px; top: 710px;">connectiongen
+  left: 10em; top: 710px;">connectiongen
 </button>
 <button class="btn btn-outline-primary my-2 my-sm-0" id="dfs" onclick="" style="position: absolute;
-  left: 240px; top: 710px;">depthfirst
+  left: 18em; top: 710px;">depthfirst
 </button>
+<button class="btn btn-outline-primary my-2 my-sm-0" style="position: absolute;
+  left: 24em; top: 710px;" onclick="window.location.reload();" id = "refresh">refresh</button>
 
 <!-- <img src="white.jpg" class="form2">  -->
 <div class="form-group">

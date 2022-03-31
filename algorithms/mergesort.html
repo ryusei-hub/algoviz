@@ -22,7 +22,7 @@
         function generatebar() {
             for (x = 0; x < 20; x++) {
                 var randomnum = Math.floor(Math.random() * 200) + 1;
-                var bar = Path.Rectangle(x * 20, 300, 12, -randomnum)
+                var bar = Path.Rectangle(x * 30, 495, 24, -randomnum)
                 bar.strokeColor = "black"
                 blocks.push(bar)
                 nums.push(randomnum)
@@ -53,18 +53,18 @@
         }
 
         function updatebar(statusarray2) {
+            document.getElementById("stepsort").disabled=true;
+            document.getElementById("sort").disabled=true;
             setTimeout(function () {
-                console.log(y)
-                console.log(statusarray2)
                 blocks[y].strokeColor = "white"
-                var bar = Path.Rectangle(y * 20, 300, 12, -statusarray2[y])
+                var bar = Path.Rectangle(y * 30, 495, 24, -statusarray2[y])
                 bar.strokeColor = "black"
                 blocks[y] = bar
-                console.log(blocks[y])
                 if (y < 19) {
                     y++
                     updatebar(statusarray2)
                 } else {
+                    document.getElementById("stepsort").disabled=false;
                 }
             }, 100)
         }
@@ -84,7 +84,6 @@
         generatebar()
         var sorted = mergeSort(nums)
         globals.nodeadd = function () {
-            console.log(time)
             if (time == 0) {
                 setTimeout(function () {
                     y = 0
@@ -102,16 +101,33 @@
                     y = 0
                     updatebar(sorted)
                 }, 1000)
-            }
+            }else {document.getElementById("sort").disabled=true;}
+        }
+        globals.totalsort = function (){
+            setTimeout(function () {
+                y = 0
+                updatebar(statusarray)
+                time++
+            }, 1000)
+            setTimeout(function () {
+                y = 0
+                updatebar(statusarray1)
+                time++
+            }, 4000)
+            setTimeout(function () {
+                y = 0
+                updatebar(sorted)
+            }, 8000)
         }
     </script>
     <script type="text/javascript">
         window.globals = {}
         window.onload = function () {
-            document.getElementById('sort').onclick = function () {
+            document.getElementById('stepsort').onclick = function () {
                 window.globals.nodeadd();
             }
-            document.getElementById('bfs').onclick = function () {
+            document.getElementById('sort').onclick = function () {
+                window.globals.totalsort();
             }
         }
     </script>
@@ -205,9 +221,15 @@
 </nav>
 <!--  <img src="assets/white.jpg" class="form">-->
 <canvas class="form" height=400 id="myCanvas" style="background-color: white" width=800></canvas>
-<button class="btn btn-outline-primary my-2 my-sm-0" id="sort" onclick="gen()" style="position: absolute;
-  left: 100px; top: 710px;">sort
+<button class="btn btn-outline-primary my-2 my-sm-0" id="stepsort" onclick="gen()" style="position: absolute;
+  left: 10em; top: 710px;">sort
 </button>
+<button class="btn btn-outline-primary my-2 my-sm-0" id="sort" onclick="gen()" style="position: absolute;
+  left: 14em; top: 710px;">totalsort
+</button>
+
+<button class="btn btn-outline-primary my-2 my-sm-0" style="position: absolute;
+  left: 20em; top: 710px;" onclick="window.location.reload();" id = "refresh">refresh</button>
 <!-- <img src="white.jpg" class="form2">  -->
 <div class="form-group">
     <textarea class="form-control" id="exampleFormControlTextarea1"
