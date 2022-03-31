@@ -17,7 +17,7 @@
     <div class="content">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1><b>ALGOVIZ</b></h1>
+                <h1><b>ALGOVIZpoopy</b></h1>
                 <p class="parag">
                     <b>Algorithm visualizer</b>
                 </p>
