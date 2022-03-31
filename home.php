@@ -70,6 +70,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="algorithms/prim.html">Prim</a>
                         <a class="dropdown-item" href="algorithms/kmp.html">KMP</a>
+                        <a class="dropdown-item" href="../algorithms/leealgorithm.html">Lee Algorithm</a>
                     </div>
                 </li>
                 <!-- //FORUM BUTTON -->
