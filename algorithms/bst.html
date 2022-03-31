@@ -28,19 +28,20 @@
                 return null
             }
             var randomnum = window.prompt("A number between 0 and 99")
-            if(randomnum <=99 && randomnum>=0){
+            if(randomnum <=99 && randomnum>=0) {
                 BST.insert(randomnum);
+                console.log(num[0].content)
                 if (havenum[0] == false) {
                     createnum(0, randomnum)
-                } else if (num[0].content > randomnum) {
+                } else if (parseInt(num[0].content) >= randomnum) {
                     if (havenum[1]) {
-                        if (num[1].content > randomnum) {
+                        if (parseInt(num[1].content) >= randomnum) {
                             if (havenum[3]) {
                                 addnode()
                             } else {
                                 createnum(3, randomnum)
                             }
-                        } else if (num[1].content < randomnum) {
+                        } else if (parseInt(num[1].content) < randomnum) {
                             if (havenum[4]) {
                                 addnode()
                             } else {
@@ -52,15 +53,15 @@
                     } else {
                         createnum(1, randomnum)
                     }
-                } else if (num[0].content < randomnum) {
+                } else if (parseInt(num[0].content) < randomnum) {
                     if (havenum[2]) {
-                        if (num[2].content > randomnum) {
+                        if (parseInt(num[2].content) >= randomnum) {
                             if (havenum[5]) {
                                 addnode()
                             } else {
                                 createnum(5, randomnum)
                             }
-                        } else if (num[2].content < randomnum) {
+                        } else if (parseInt(num[2].content) < randomnum) {
                             if (havenum[6]) {
                                 addnode()
                             } else {
@@ -76,8 +77,6 @@
                     addnode()
                 }
             }
-
-
         }
 
         function createnum(n, randomnum) {
