@@ -2,68 +2,72 @@
     position: absolute;
     left: 50%;
     transform: translatex(-50%);
-	font-family: Arial, serif;
+    font-family: Arial, serif;
 
 }
-.navbar-brand{
-	font-weight: bold;
-	font-size:25px; 
-	color: orangered;
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 25px;
+    color: orangered;
 
 }
-.user-icon{
+
+.user-icon {
     width: 30px;
-    left:10px;
+    left: 10px;
     border-width: 5px;
     border-color: black;
 }
 
 
-.form{
-	width: 700px;
-	height: 700px;
-	position: absolute;
-	left: 100px;
-	top: 200px;
-	border-radius: 10px;
-	/* padding: 205px; */
+.form {
+    width: 700px;
+    height: 700px;
+    position: absolute;
+    left: 100px;
+    top: 200px;
+    border-radius: 10px;
+    /* padding: 205px; */
 }
-.form-group{
-	width: 500px;
-	height: 600px;
-	position: absolute;
-	left: 1200px;
-	top: 200px;
-	border-radius: 10px;
-	/* padding: 205px; */
+
+.form-group {
+    width: 500px;
+    height: 600px;
+    position: absolute;
+    left: 1200px;
+    top: 200px;
+    border-radius: 10px;
+    /* padding: 205px; */
 }
 
 
-.jumbotron{
-	margin-left: auto;
-    margin-right: auto;
-	background: linear-gradient(to top,rgba(2, 2, 14, 0.8)50%,rgba(2, 2, 14, 0.8)50%);
-	width:60em;
-    height:140vh;
-
-}
-.form{
+.jumbotron {
     margin-left: auto;
     margin-right: auto;
-    width:46em;
-    position: relative;
-	transform: translateX(-10em);
+    background: linear-gradient(to top, rgba(2, 2, 14, 0.8) 50%, rgba(2, 2, 14, 0.8) 50%);
+    width: 60em;
+    height: 140vh;
+
 }
 
-.textArea{
-	margin-left: auto;
-	margin-right: auto;
-	width:46em;
+.form {
+    margin-left: auto;
+    margin-right: auto;
+    width: 46em;
+    position: relative;
+    transform: translateX(-10em);
+}
+
+.textArea {
+    margin-left: auto;
+    margin-right: auto;
+    width: 46em;
 }
 
 .newTopic {
-	display: inline-flex;
-	align-items: center;
+    display: inline-flex;
+    align-items: center;
 
 }
 

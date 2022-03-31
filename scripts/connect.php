@@ -1,6 +1,7 @@
 <?php
 
-function Connect() {
+function Connect()
+{
     $database_host = "dbhost.cs.man.ac.uk";
     $database_user = "m59511md";
     $database_pass = "LeqNGDvbT6VEyF";

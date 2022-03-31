@@ -2,31 +2,33 @@
     position: absolute;
     left: 50%;
     transform: translatex(-50%);
-    font-family: Arial;
+    font-family: Arial, serif;
 
 }
-.user-icon{
-    
+
+.user-icon {
+
     width: 1.875em;
-    left:0.625em;
+    left: 0.625em;
     border-width: 0.3em;
     border-color: black;
 }
 
-.form{
-	width: 600px;
-	height: 500px;
-	position: absolute;
-	left: 100px;
-	top: 200px;
-	border-radius: 10px;
+.form {
+    width: 600px;
+    height: 500px;
+    position: absolute;
+    left: 100px;
+    top: 200px;
+    border-radius: 10px;
 
 }
-.form-group{
-	width: 500px;
-	height: 600px;
-	position: absolute;
-	left: 900px;
-	top: 200px;
-	border-radius: 10px;
+
+.form-group {
+    width: 500px;
+    height: 600px;
+    position: absolute;
+    left: 900px;
+    top: 200px;
+    border-radius: 10px;
 }
