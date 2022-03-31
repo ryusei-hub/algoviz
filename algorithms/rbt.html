@@ -16,17 +16,19 @@
     <!-- Define inlined PaperScript associate it with myCanvas -->
     <script canvas="myCanvas" type="text/paperscript">
         var rbt = new Tree()
-        var points = [new Point(200, 50), new Point(170, 100), new Point(230, 100), new Point(150, 150),
-            new Point(180, 150), new Point(210, 150), new Point(250, 150)];
+        var points = [new Point(300, 100), new Point(150, 200), new Point(450, 200), new Point(100, 300),
+            new Point(200, 300), new Point(400, 300), new Point(500, 300)];
         var havenum = [false, false, false, false, false, false, false]
         var num = [-1, -1, -1, -1, -1, -1, -1]
         var path = [-1, new Path.Line(points[0], points[1]), new Path.Line(points[0], points[2]), new Path.Line(points[1], points[3]), new Path.Line(points[1], points[4]), new Path.Line(points[2], points[5]), new Path.Line(points[2], points[6])]
         var circles = [];
 
         function addnode() {
-            var randomnum = Math.floor(Math.random() * 100) + 1;
-            rbt.insert({key: randomnum})
-            updategraph(0, rbt.root)
+            var randomnum = window.prompt("A number between 0 and 99")
+            if(randomnum <=99 && randomnum>=0){
+                rbt.insert({key: randomnum})
+                updategraph(0, rbt.root)
+            }
         }
 
         function updategraph(x, node) {
@@ -53,14 +55,14 @@
             circles[n].fillColor = "black"
             circles[n].strokeColor = "black"
             path[n].strokeColor = color
-            path[n].strokeWidth = 5
+            path[n].strokeWidth = 10
             num[n] = number
             havenum[n] = true
         }
 
         function treegrapggen(points) {
             for (p = 0; p < points.length; p++) {
-                var myCircle = new Path.Circle(points[p], 10);
+                var myCircle = new Path.Circle(points[p], 30);
                 circles.push(myCircle)
             }
         }
@@ -529,9 +531,10 @@
 </nav>
 <canvas class="form" height=800 id="myCanvas" style="background-color: white" width=800></canvas>
 <button class="btn btn-outline-primary my-2 my-sm-0" id="addnode" onclick="" style="position: absolute;
-  left: 100px; top: 710px;">addnode
+  left: 10em; top: 710px;">addnode
 </button>
-
+<button class="btn btn-outline-primary my-2 my-sm-0" style="position: absolute;
+  left: 18em; top: 710px;" onclick="window.location.reload();" id = "refresh">refresh</button>
 
 <!-- <img src="white.jpg" class="form2">  -->
 <div class="form-group">

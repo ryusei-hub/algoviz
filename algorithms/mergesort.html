@@ -22,7 +22,7 @@
         function generatebar() {
             for (x = 0; x < 20; x++) {
                 var randomnum = Math.floor(Math.random() * 200) + 1;
-                var bar = Path.Rectangle(x * 20, 300, 12, -randomnum)
+                var bar = Path.Rectangle(x * 30, 495, 24, -randomnum)
                 bar.strokeColor = "black"
                 blocks.push(bar)
                 nums.push(randomnum)
@@ -57,7 +57,7 @@
                 console.log(y)
                 console.log(statusarray2)
                 blocks[y].strokeColor = "white"
-                var bar = Path.Rectangle(y * 20, 300, 12, -statusarray2[y])
+                var bar = Path.Rectangle(y * 30, 495, 24, -statusarray2[y])
                 bar.strokeColor = "black"
                 blocks[y] = bar
                 console.log(blocks[y])
@@ -102,7 +102,7 @@
                     y = 0
                     updatebar(sorted)
                 }, 1000)
-            }
+            }else {document.getElementById("sort").disabled=true;}
         }
     </script>
     <script type="text/javascript">
@@ -201,8 +201,10 @@
 <!--  <img src="assets/white.jpg" class="form">-->
 <canvas class="form" height=400 id="myCanvas" style="background-color: white" width=800></canvas>
 <button class="btn btn-outline-primary my-2 my-sm-0" id="sort" onclick="gen()" style="position: absolute;
-  left: 100px; top: 710px;">sort
+  left: 10em; top: 710px;">sort
 </button>
+<button class="btn btn-outline-primary my-2 my-sm-0" style="position: absolute;
+  left: 14em; top: 710px;" onclick="window.location.reload();" id = "refresh">refresh</button>
 <!-- <img src="white.jpg" class="form2">  -->
 <div class="form-group">
     <textarea class="form-control" id="exampleFormControlTextarea1"
