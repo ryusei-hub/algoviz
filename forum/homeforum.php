@@ -95,8 +95,10 @@
                         <input name="name_topic" id="topic" class="form-control" id="inputTopic"
                                aria-describedby="inputHelp" placeholder="Add an entry"/>
                 <p style="color:white"><strong>Topic Description:</strong></p>
-                <label for="description"></label><textarea name="post_text" style="resize:none" id="description" value="text"
-                                                           placeholder="Add a Description" rows=8 cols=97 wrap=virtual></textarea>
+                <label for="description"></label><textarea name="post_text" style="resize:none" id="description"
+                                                           value="text"
+                                                           placeholder="Add a Description" rows=8 cols=97
+                                                           wrap=virtual></textarea>
                 <br><input type="file" name="myImage" accept="image/x-png,image/gif,image/jpeg"/><br>
                 <small id="inputHelp" class="form-text text-muted"></small>
                 <br>

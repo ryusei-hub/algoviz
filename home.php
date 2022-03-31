@@ -13,57 +13,6 @@
 </head>
 
 <body>
-
-<?php
-include 'scripts/connect.php';
-
-function SignUp()
-{
-    $conn = Connect();
-
-    $username = $_POST['uname'];
-    $email = $_POST['email'];
-    $password = $_POST['psw'];
-    $re_password = $_POST['re-psw'];
-
-    $sql = sprintf("
-    INSERT INTO users (name, password, email)
-    VALUES ('%s', '%s', '%s')
-    ", $username, $password, $email);
-
-    $conn->exec($sql);
-    $conn = null;
-}
-
-function LogIn()
-{
-    $conn = Connect();
-
-    $username = $_POST['uname1'];
-    $password = $_POST['psw1'];
-
-    $stmt = $conn->query("SELECT name, password FROM users");
-    $stmt->setFetchMode(PDO::FETCH_NUM);
-
-    foreach ($stmt as $row) {
-        $curr_username = $row[0];
-        $curr_password = $row[1];
-
-        if ($curr_username == $username and $curr_password == $password) {
-            echo "<script>console.log('Logged in!!')</script>";
-        }
-    }
-}
-
-if (!empty($_POST['uname1'])) {
-    LogIn();
-} else if (!empty($_POST['uname'])) {
-    SignUp();
-} else {
-    echo "<script>console.log('goofy')</script>";
-}
-
-?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand " href="home.php" style="font-weight: bold;font-size:25px; color: #3271a8;">ALGOVIZ</a>
     <a href="account.html">
