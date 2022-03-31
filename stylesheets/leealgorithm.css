@@ -24,13 +24,19 @@ html {
 }
 
 .gridContainer {
-    margin-top: 25px;
-    margin-right: 40px;
+    margin-top: 15em;
+    margin-right: 20em;
     display: inline-grid;
     grid-template-columns: repeat(16, 2fr);
     grid-template-rows: repeat(16, 2fr);
-    border: 5px solid black;
-    border-radius: 5px;
-    height: 900px;
-    width: 900px;
+    border: 0.4em solid white;
+    border-radius: 0.5em;
+    height: 45em;
+    width: 45em;
+}
+
+#gridContainer{
+    position: absolute;
+    top: -8em;
+    left: 3em;
 }
