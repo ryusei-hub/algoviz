@@ -35,8 +35,8 @@ html {
     width: 45em;
 }
 
-#gridContainer{
+#gridContainer {
     position: absolute;
-    top: -8em;
+    top: -7em;
     left: 3em;
 }
