@@ -14,7 +14,7 @@
 <body style="background:linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../assets/two.jpg);">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand " href="../home.php" style="font-weight: bold;font-size:25px; color: #3271a8;">ALGOVIZ</a>
-    <a href="../account.html">
+    <a href="../account.php">
         <img class="user-icon" src="../assets/icon.png" alt="user icon">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -35,8 +35,8 @@
                         Trees
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../algorithms/rbt.html">red black tree</a>
-                        <a class="dropdown-item" href="../algorithms/bst.html">binary search tree</a>
+                        <a class="dropdown-item" href="../algorithms/rbt.php">red black tree</a>
+                        <a class="dropdown-item" href="../algorithms/bst.php">binary search tree</a>
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
@@ -46,8 +46,8 @@
                         Sorts
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../algorithms/mergesort.html">Merge sort</a>
-                        <a class="dropdown-item" href="../algorithms/quicksort.html">Quick sort</a>
+                        <a class="dropdown-item" href="../algorithms/mergesort.php">Merge sort</a>
+                        <a class="dropdown-item" href="../algorithms/quicksort.php">Quick sort</a>
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
@@ -57,8 +57,8 @@
                         Searching
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../algorithms/bst.html">breadth first search</a>
-                        <a class="dropdown-item" href="../algorithms/dfs.html">depth first search</a>
+                        <a class="dropdown-item" href="../algorithms/bst.php">breadth first search</a>
+                        <a class="dropdown-item" href="../algorithms/dfs.php">depth first search</a>
                     </div>
                 </li>
                 <!-- LAST DROP DOWN /////////////////// -->
@@ -69,8 +69,8 @@
                         Others
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../algorithms/prim.html">Prim</a>
-                        <a class="dropdown-item" href="../algorithms/kmp.html">KMP</a>
+                        <a class="dropdown-item" href="../algorithms/prim.php">Prim</a>
+                        <a class="dropdown-item" href="../algorithms/kmp.php">KMP</a>
                         <!-- <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Something else here</a> -->
                     </div>

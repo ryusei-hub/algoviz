@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html>
+<?php session_start(); ?>
+<!doctype html>
+<html lang="en">
 
 <head>
     <title>AlgoViz</title>
@@ -28,7 +29,7 @@
 
         function graphgen() {
             for (i = 0; i < 10; i++) {
-                var myPoint = new Point(550, 480) * Point.random();
+                var myPoint = new Point(500, 480) * Point.random();
                 var myCircle = new Path.Circle(myPoint, 10);
                 var overlap = false;
                 for (x = 0; x < i; x++) {
@@ -54,11 +55,12 @@
 
         graphgen()
 
-        function depthfirstsearch(g, s, v) {
+        function breadthfirstsearch(g, s, v) {
             marked = [false, false, false, false, false, false, false, false, false, false]
             edgeTo = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
             pathedgeTo = ["", "", "", "", "", "", "", "", "", ""];
-            dfs(g, s)
+            bfs(g, s)
+            console.log(marked)
             if (marked[v] == true) {
                 for (x = v; x != s; x = edgeTo[x]) {
                     path.push(x);
@@ -66,6 +68,7 @@
                 }
                 path.push(s);
             }
+            console.log(path)
             if (path.length != 0) {
                 pathindex = pathe.length - 1
                 pathcoloring()
@@ -83,15 +86,21 @@
             }, 500)
         }
 
-        function dfs(g, v) {
-            marked[v] = true;
-            for (var f = 0; f < g[v].length; f++) {
-                w = g[v][f][1]
-                if (marked[w] == false) {
-                    g[v][f][0].strokeColor = "green"
-                    edgeTo[w] = v
-                    pathedgeTo[w] = g[v][f][0]
-                    dfs(g, w)
+        function bfs(g, k) {
+            var queue = []
+            marked[k] = true;
+            queue.push(k)
+            while (queue.length != 0) {
+                var j = queue.shift()
+                for (f = 0; f < g[j].length; f++) {
+                    w = g[j][f][1]
+                    g[j][f][0].strokeColor = "green"
+                    if (marked[w] == false) {
+                        edgeTo[w] = j
+                        pathedgeTo[w] = g[j][f][0]
+                        marked[w] = true;
+                        queue.push(w)
+                    }
                 }
             }
         }
@@ -156,8 +165,8 @@
                 }
             }
         }
-        globals.dfsearch = function () {
-            depthfirstsearch(dirpath, 0, 9)
+        globals.bfsearch = function () {
+            breadthfirstsearch(dirpath, 0, 9)
         }
     </script>
     <script type="text/javascript">
@@ -166,8 +175,8 @@
             document.getElementById('linegen').onclick = function () {
                 window.globals.connectiongenonclick();
             }
-            document.getElementById('dfs').onclick = function () {
-                window.globals.dfsearch();
+            document.getElementById('bfs').onclick = function () {
+                window.globals.bfsearch();
             }
         }
     </script>
@@ -178,9 +187,12 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand " href="../home.php" style="font-weight: bold;font-size:25px; color: #3271a8;">ALGOVIZ</a>
-    <a href="../account.html">
+    <a href="../account.php">
         <img alt="user icon" class="user-icon" src="../assets/icon.png">
     </a>
+    <a class="navbar-brand " href="../account.php" style="font-weight: bold;font-size:25px; color: #3271a8;"
+       id="username"></a>
+    <?php echo sprintf("<script>document.getElementById('username').innerHTML = '%s'</script>", $_SESSION["name"]) ?>
     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
             class="navbar-toggler"
             data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
@@ -190,62 +202,62 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav navbar-center">
                 <!-- <li class="nav-item active">
-                        <a class="nav-link" href="#" style="font-size: 20px; font-family:Helvetica;">Home <span class="sr-only">(current)</span></a>
-                        </li> -->
+                      <a class="nav-link" href="#" style="font-size: 20px; font-family:Helvetica;">Home <span class="sr-only">(current)</span></a>
+                      </li> -->
                 <!-- DROP DOWN START ........../ -->
                 <li class="nav-item active dropdown">
                     <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
                        data-toggle="dropdown"
-                       href="#"
-                       id="navbarDropdown" role="button" style="font-size: 20px; font-family:Helvetica;">
+                       href="#" id="navbarDropdown" role="button"
+                       style="font-size: 20px; font-family:Helvetica;">
                         Trees
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="rbt.html">red black tree</a>
-                        <a class="dropdown-item" href="bst.html">binary search tree</a>
+                        <a class="dropdown-item" href="rbt.php">red black tree</a>
+                        <a class="dropdown-item" href="bst.php">binary search tree</a>
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
                     <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
                        data-toggle="dropdown"
-                       href="#"
-                       id="navbarDropdown" role="button" style="font-size: 20px; font-family:Helvetica;">
+                       href="#" id="navbarDropdown" role="button"
+                       style="font-size: 20px; font-family:Helvetica;">
                         Sorts
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="mergesort.html">Merge sort</a>
-                        <a class="dropdown-item" href="quicksort.html">Quick sort</a>
+                        <a class="dropdown-item" href="mergesort.php">Merge sort</a>
+                        <a class="dropdown-item" href="quicksort.php">Quick sort</a>
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
                     <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
                        data-toggle="dropdown"
-                       href="#"
-                       id="navbarDropdown" role="button" style="font-size: 20px; font-family:Helvetica;">
+                       href="#" id="navbarDropdown" role="button"
+                       style="font-size: 20px; font-family:Helvetica;">
                         Searching
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="bfs.html">breadth first search</a>
-                        <a class="dropdown-item" href="dfs.html">depth first search</a>
+                        <a class="dropdown-item" href="bfs.php">breadth first search</a>
+                        <a class="dropdown-item" href="dfs.php">depth first search</a>
                     </div>
                 </li>
                 <!-- LAST DROP DOWN /////////////////// -->
                 <li class="nav-item active dropdown">
                     <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle"
                        data-toggle="dropdown"
-                       href="../forum/forum.php" id="navbarDropdown" role="button"
+                       href="#" id="navbarDropdown" role="button"
                        style="font-size: 20px; font-family:Helvetica;">
                         Others
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="prim.html">Prim</a>
-                        <a class="dropdown-item" href="kmp.html">KMP</a>
+                        <a class="dropdown-item" href="prim.php">Prim</a>
+                        <a class="dropdown-item" href="kmp.php">KMP</a>
                         <!-- <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a> -->
+                              <a class="dropdown-item" href="#">Something else here</a> -->
                     </div>
                 </li>
                 <li class="nav-item active">
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="#"
+                    <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="../forum/forum.php"
                        style="font-size: 20px; font-family:Helvetica;">Forum</a>
                 </li>
             </ul>
@@ -263,16 +275,16 @@
 <button class="btn btn-outline-primary my-2 my-sm-0" id="linegen" onclick="gen()" style="position: absolute;
   left: 10em; top: 710px;">connectiongen
 </button>
-<button class="btn btn-outline-primary my-2 my-sm-0" id="dfs" onclick="" style="position: absolute;
-  left: 18em; top: 710px;">depthfirst
+<button class="btn btn-outline-primary my-2 my-sm-0" id="bfs" onclick="" style="position: absolute;
+  left: 18em; top: 710px;">breadthfirst
 </button>
-<button class="btn btn-outline-primary my-2 my-sm-0" style="position: absolute;
-  left: 24em; top: 710px;" onclick="window.location.reload();" id = "refresh">refresh</button>
-
+<button class="btn btn-outline-primary my-2 my-sm-0" id="refresh" onclick="window.location.reload();" style="position: absolute;
+  left: 24em; top: 710px;">refresh
+</button>
 <!-- <img src="white.jpg" class="form2">  -->
 <div class="form-group">
-    <textarea class="form-control" id="exampleFormControlTextarea1"
-              rows="3">Using recursion. Mark each visited vertex and keep track of edge taken to visit it. Return when no unvisited options</textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1"
+                  rows="3">Repeat until queue is empty. Remove vertex v from queue, add to queue all unmarked vertices adjacent to v and mark them</textarea>
 </div>
 
 

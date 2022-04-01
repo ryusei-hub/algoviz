@@ -1,5 +1,6 @@
-<!doctype html>
-<html lang="en">
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html>
 
 <head>
     <title>AlgoViz</title>
@@ -20,11 +21,10 @@
         var dirpath = [[], [], [], [], [], [], [], [], [], []];
         var marked = [false, false, false, false, false, false, false, false, false, false];
         var count = 0;
-        var edgeTo = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         var path = []
-        var pathedgeTo = [];
-        var pathe = [];
         var pathindex = 0
+        var pq = new PriorityQueue()
+        var mst = []
 
         function graphgen() {
             for (i = 0; i < 10; i++) {
@@ -54,56 +54,6 @@
 
         graphgen()
 
-        function breadthfirstsearch(g, s, v) {
-            marked = [false, false, false, false, false, false, false, false, false, false]
-            edgeTo = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-            pathedgeTo = ["", "", "", "", "", "", "", "", "", ""];
-            bfs(g, s)
-            console.log(marked)
-            if (marked[v] == true) {
-                for (x = v; x != s; x = edgeTo[x]) {
-                    path.push(x);
-                    pathe.push(pathedgeTo[x])
-                }
-                path.push(s);
-            }
-            console.log(path)
-            if (path.length != 0) {
-                pathindex = pathe.length - 1
-                pathcoloring()
-            }
-        }
-
-        function pathcoloring() {
-            setTimeout(function () {
-                pathe[pathindex].strokeColor = "red";
-                pathe[pathindex].strokeWidth = 4
-                pathindex--
-                if (pathindex >= 0) {
-                    pathcoloring()
-                }
-            }, 500)
-        }
-
-        function bfs(g, k) {
-            var queue = []
-            marked[k] = true;
-            queue.push(k)
-            while (queue.length != 0) {
-                var j = queue.shift()
-                for (f = 0; f < g[j].length; f++) {
-                    w = g[j][f][1]
-                    g[j][f][0].strokeColor = "green"
-                    if (marked[w] == false) {
-                        edgeTo[w] = j
-                        pathedgeTo[w] = g[j][f][0]
-                        marked[w] = true;
-                        queue.push(w)
-                    }
-                }
-            }
-        }
-
         function connectiongen(index) {
             var same = false;
             var pointcho = points;
@@ -130,8 +80,8 @@
             if (overlape == false && targetindex != index) {
                 if (dirpath[index].length == 0) {
                     pathline.strokeColor = 'black';
-                    dirpath[index].push([pathline, targetindex]);
-                    dirpath[targetindex].push([pathline, index])
+                    dirpath[index].push([pathline, targetindex, index]);
+                    dirpath[targetindex].push([pathline, index, targetindex])
                 }
                 for (d = 0; d < dirpath[index].length; d++) {
                     if (dirpath[index][d][1] == targetindex) {
@@ -147,14 +97,56 @@
                 }
                 if (same == false) {
                     pathline.strokeColor = 'black';
-                    dirpath[index].push([pathline, targetindex]);
-                    dirpath[targetindex].push([pathline, index])
+                    dirpath[index].push([pathline, targetindex, index]);
+                    dirpath[targetindex].push([pathline, index, targetindex])
                 }
             } else {
                 // pathline.strokeColor = 'blue';
             }
             circles[0].fillColor = "red";
             circles[9].fillColor = "blue";
+        }
+
+        function PrimMST(G) {
+            visit(G, 0);
+            console.log(pq)
+            while (pq.isEmpty() != true) {
+                e = pq.dequeue();
+                v = e.element[1];
+                w = e.element[2];
+                if (marked[w] && marked[v] == true) {
+                    continue;
+                }
+                mst.push(e)
+                if (marked[v] == false) {
+                    visit(G, v)
+                }
+                if (marked[w] == false) {
+                    visit(G, w)
+                }
+            }
+            pathcoloring()
+        }
+
+        function pathcoloring() {
+            setTimeout(function () {
+                ((mst[pathindex]).element[0]).strokeColor = "red";
+                ((mst[pathindex]).element[0]).strokeWidth = 5
+                pathindex++
+                if (pathindex < mst.length) {
+                    pathcoloring()
+                }
+            }, 500)
+        }
+
+        function visit(G, v) {
+            marked[v] = true;
+            for (f = 0; f < G[v].length; f++) {
+                e = G[v][f]
+                if (marked[e[1]] == false) {
+                    pq.enqueue(e, e[0].length)
+                }
+            }
         }
 
         globals.connectiongenonclick = function () {
@@ -165,7 +157,9 @@
             }
         }
         globals.bfsearch = function () {
-            breadthfirstsearch(dirpath, 0, 9)
+            // breadthfirstsearch(dirpath,0,9)
+            PrimMST(dirpath)
+
         }
     </script>
     <script type="text/javascript">
@@ -178,6 +172,78 @@
                 window.globals.bfsearch();
             }
         }
+
+        class QElement {
+            constructor(element, priority) {
+                this.element = element;
+                this.priority = priority;
+            }
+        }
+
+        class PriorityQueue {
+
+            constructor() {
+                this.items = [];
+            }
+
+            enqueue(element, priority) {
+                // creating object from queue element
+                var qElement = new QElement(element, priority);
+                var contain = false;
+
+                // iterating through the entire
+                // item array to add element at the
+                // correct location of the Queue
+                for (var i = 0; i < this.items.length; i++) {
+                    if (this.items[i].priority > qElement.priority) {
+                        // Once the correct location is found it is
+                        // enqueued
+                        this.items.splice(i, 0, qElement);
+                        contain = true;
+                        break;
+                    }
+                }
+
+                // if the element have the highest priority
+                // it is added at the end of the queue
+                if (!contain) {
+                    this.items.push(qElement);
+                }
+            }
+
+            dequeue() {
+                // return the dequeued element
+                // and remove it.
+                // if the queue is empty
+                // returns Underflow
+                if (this.isEmpty())
+                    return "Underflow";
+                return this.items.shift();
+            }
+
+            front() {
+                // returns the highest priority element
+                // in the Priority queue without removing it.
+                if (this.isEmpty())
+                    return "No elements in Queue";
+                return this.items[0];
+            }
+
+            rear() {
+                // returns the lowest priority
+                // element of the queue
+                if (this.isEmpty())
+                    return "No elements in Queue";
+                return this.items[this.items.length - 1];
+            }
+
+            isEmpty() {
+                // return true if the queue is empty.
+                return this.items.length == 0;
+            }
+        }
+
+        var priorityQueue = new PriorityQueue();
     </script>
 </head>
 
@@ -186,9 +252,12 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand " href="../home.php" style="font-weight: bold;font-size:25px; color: #3271a8;">ALGOVIZ</a>
-    <a href="../account.html">
+    <a href="../account.php">
         <img alt="user icon" class="user-icon" src="../assets/icon.png">
     </a>
+    <a class="navbar-brand " href="../account.php" style="font-weight: bold;font-size:25px; color: #3271a8;"
+       id="username"></a>
+    <?php echo sprintf("<script>document.getElementById('username').innerHTML = '%s'</script>", $_SESSION["name"]) ?>
     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
             class="navbar-toggler"
             data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
@@ -209,8 +278,8 @@
                         Trees
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="rbt.html">red black tree</a>
-                        <a class="dropdown-item" href="bst.html">binary search tree</a>
+                        <a class="dropdown-item" href="rbt.php">red black tree</a>
+                        <a class="dropdown-item" href="bst.php">binary search tree</a>
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
@@ -221,8 +290,8 @@
                         Sorts
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="mergesort.html">Merge sort</a>
-                        <a class="dropdown-item" href="quicksort.html">Quick sort</a>
+                        <a class="dropdown-item" href="mergesort.php">Merge sort</a>
+                        <a class="dropdown-item" href="quicksort.php">Quick sort</a>
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
@@ -233,8 +302,8 @@
                         Searching
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="bfs.html">breadth first search</a>
-                        <a class="dropdown-item" href="dfs.html">depth first search</a>
+                        <a class="dropdown-item" href="bfs.php">breadth first search</a>
+                        <a class="dropdown-item" href="dfs.php">depth first search</a>
                     </div>
                 </li>
                 <!-- LAST DROP DOWN /////////////////// -->
@@ -246,8 +315,8 @@
                         Others
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="prim.html">Prim</a>
-                        <a class="dropdown-item" href="kmp.html">KMP</a>
+                        <a class="dropdown-item" href="prim.php">Prim</a>
+                        <a class="dropdown-item" href="kmp.php">KMP</a>
                         <!-- <div class="dropdown-divider"></div>
                               <a class="dropdown-item" href="#">Something else here</a> -->
                     </div>
@@ -267,19 +336,21 @@
 
     </div>
 </nav>
-<canvas class="form" height=800 id="myCanvas" style="background-color: white" width=800></canvas>
+<canvas class="form" height=500 id="myCanvas" style="background-color: white" width=500></canvas>
 <button class="btn btn-outline-primary my-2 my-sm-0" id="linegen" onclick="gen()" style="position: absolute;
   left: 10em; top: 710px;">connectiongen
 </button>
 <button class="btn btn-outline-primary my-2 my-sm-0" id="bfs" onclick="" style="position: absolute;
-  left: 18em; top: 710px;">breadthfirst
+  left: 19em; top: 710px;">prim
 </button>
-<button class="btn btn-outline-primary my-2 my-sm-0" style="position: absolute;
-  left: 24em; top: 710px;" onclick="window.location.reload();" id = "refresh">refresh</button>
+<button class="btn btn-outline-primary my-2 my-sm-0" id="refresh" onclick="window.location.reload();" style="position: absolute;
+  left: 24em; top: 710px;">refresh
+</button>
+
 <!-- <img src="white.jpg" class="form2">  -->
 <div class="form-group">
         <textarea class="form-control" id="exampleFormControlTextarea1"
-                  rows="3">Repeat until queue is empty. Remove vertex v from queue, add to queue all unmarked vertices adjacent to v and mark them</textarea>
+                  rows="3">Start with vertex 0 and greedily grow tree T. Add to T the min weight edge with exactly one endpoint in T. Repeat until V-1 edges</textarea>
 </div>
 
 

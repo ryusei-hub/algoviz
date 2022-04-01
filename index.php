@@ -1,4 +1,9 @@
-<!doctype html>
+<?php
+// Begin a new session to store name data across pages
+session_start();
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>AlgoViz</title>
@@ -25,11 +30,13 @@
                 <button class="buttn" onclick="document.getElementById('id02').style.display='block'">Sign Up</button>
                 <div class="modal" id="id01">
 
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="modal-content animate" method="post">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="modal-content animate"
+                          method="post">
                         <?php
                         require_once 'scripts/connect.php';
 
-                        function LogIn() {
+                        function LogIn()
+                        {
 
                             $conn = Connect();
 
@@ -45,7 +52,8 @@
                                 $curr_password = $row[1];
 
                                 if ($curr_username == $uname and password_verify($password, $curr_password)) {
-                                    echo "<script>console.log('Logged in!!')</script>";
+                                    $_SESSION["logged_in"] = true;
+                                    $_SESSION["name"] = $uname;
                                     header('location: home.php');
                                     return;
                                 }
@@ -55,7 +63,7 @@
                         }
 
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            if (!empty($_POST["uname1"])){
+                            if (!empty($_POST["uname1"])) {
                                 LogIn();
                             }
                         }
@@ -102,7 +110,7 @@
                             $param_email = trim($_POST["email"]);
                             $param_uname = trim($_POST["uname"]);
                             $param_password = trim($_POST["psw"]);
-                            $confirm_password = trim($_POST["re-psw"]);
+                            $confirm_password = trim($_POST["re_psw"]);
                             $err_str = "<span style='color: #f44336'>Something went wrong - %s</span><script>document.getElementById('id02').style.display='block'</script>";
 
                             if (!empty($param_uname)) {
@@ -132,6 +140,8 @@
                             $param_password = password_hash($param_password, PASSWORD_DEFAULT);
 
                             $stmt->execute();
+                            $_SESSION["logged_in"] = true;
+                            $_SESSION["name"] = $param_uname;
                             header('location: home.php');
 
                             unset($stmt);
@@ -140,7 +150,7 @@
                         }
 
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            if (!empty($_POST["uname"])){
+                            if (!empty($_POST["uname"])) {
                                 SignUp();
                             }
                         }
@@ -160,8 +170,8 @@
                         <label for="psw"><b>Password</b></label>
                         <input name="psw" placeholder="Enter Password" required type="password">
 
-                        <label for="re-psw"><b>Re-Enter Password</b></label>
-                        <input name="re-psw" placeholder="Re-enter Password" required type="password">
+                        <label for="re_psw"><b>Re-Enter Password</b></label>
+                        <input name="re_psw" placeholder="Re-enter Password" required type="password">
 
                         <button class="buttns" type="submit">Sign Up</button>
                     </form>

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -173,9 +174,12 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand " href="../home.php" style="font-weight: bold;font-size:25px; color: #3271a8;">ALGOVIZ</a>
-    <a href="../account.html">
+    <a href="../account.php">
         <img alt="user icon" class="user-icon" src="../assets/icon.png">
     </a>
+    <a class="navbar-brand " href="../account.php" style="font-weight: bold;font-size:25px; color: #3271a8;"
+       id="username"></a>
+    <?php echo sprintf("<script>document.getElementById('username').innerHTML = '%s'</script>", $_SESSION["name"]) ?>
     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
             class="navbar-toggler"
             data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
@@ -196,8 +200,8 @@
                         Trees
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="rbt.html">red black tree</a>
-                        <a class="dropdown-item" href="bst.html">binary search tree</a>
+                        <a class="dropdown-item" href="rbt.php">red black tree</a>
+                        <a class="dropdown-item" href="bst.php">binary search tree</a>
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
@@ -208,8 +212,8 @@
                         Sorts
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="mergesort.html">Merge sort</a>
-                        <a class="dropdown-item" href="quicksort.html">Quick sort</a>
+                        <a class="dropdown-item" href="mergesort.php">Merge sort</a>
+                        <a class="dropdown-item" href="quicksort.php">Quick sort</a>
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
@@ -220,8 +224,8 @@
                         Searching
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="bfs.html">breadth first search</a>
-                        <a class="dropdown-item" href="dfs.html">depth first search</a>
+                        <a class="dropdown-item" href="bfs.php">breadth first search</a>
+                        <a class="dropdown-item" href="dfs.php">depth first search</a>
                     </div>
                 </li>
                 <!-- LAST DROP DOWN /////////////////// -->
@@ -233,8 +237,8 @@
                         Others
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="prim.html">Prim</a>
-                        <a class="dropdown-item" href="kmp.html">KMP</a>
+                        <a class="dropdown-item" href="prim.php">Prim</a>
+                        <a class="dropdown-item" href="kmp.php">KMP</a>
                         <!-- <div class="dropdown-divider"></div>
                                   <a class="dropdown-item" href="#">Something else here</a> -->
                     </div>
@@ -258,8 +262,9 @@
 <button class="btn btn-outline-primary my-2 my-sm-0" id="animation" onclick="gen()" style="position: absolute;
   left: 10em; top: 710px;">animation
 </button>
-<button class="btn btn-outline-primary my-2 my-sm-0" style="position: absolute;
-  left: 18em; top: 710px;" onclick="window.location.reload();" id = "refresh">refresh</button>
+<button class="btn btn-outline-primary my-2 my-sm-0" id="refresh" onclick="window.location.reload();" style="position: absolute;
+  left: 18em; top: 710px;">refresh
+</button>
 <!-- <img src="white.jpg" class="form2">  -->
 <div class="form-group">
         <textarea class="form-control" id="exampleFormControlTextarea1"

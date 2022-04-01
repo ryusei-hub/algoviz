@@ -1,6 +1,8 @@
 body, html {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/two.jpg);
+    background-size: cover;
     height: 100%;
+    overflow: hidden;
 }
 
 .bg-image {
@@ -20,9 +22,6 @@ body, html {
 
 .jumbotron {
     text-align: center;
-    margin: 5% auto, 5% auto;
-    margin-left: 20%;
-    margin-right: 20%;
     background: linear-gradient(to top, rgba(2, 2, 14, 0.8) 60%, rgba(2, 2, 14, 0.8) 20%);
     /* background: #3271a8; */
     width: 60%;
@@ -31,16 +30,17 @@ body, html {
 
 .buttn {
     background-color: #3271a8;
-    font-size: 2em;
+    font-size: 0.75em;
     color: white;
     /* padding: 2em; */
     margin: auto;
     border: none;
     cursor: pointer;
-    border-radius: 1em;
-    height: 2em;
-    width: 10em;
+    border-radius: 0.5em;
+    height: 5em;
+    width: 7.5em;
 }
+
 
 .buttn:hover {
     background-color: white;
@@ -84,22 +84,21 @@ body, html {
 
 
 .carousel-item > img {
-    position: absolute;
+    padding-top: 100px;
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    height: 40rem;
-    width: 70rem;
-    margin: 0 auto;
-    border-radius: 15px;
-
+    transform: translate(-33.5em, -8em);
+    height: 22rem;
+    width: 35%;
+    object-fit: fill;
 }
 
 .carousel {
-    position: absolute;
+    margin-top: 100px;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 68%;
+    transform: translate(-50%, -100%);
     /*    padding-top: 40px;
         padding-left: 80px;
         padding-right: 80px;
@@ -109,9 +108,19 @@ body, html {
 
 /*/* Declare heights because of positioning of img element */
 .carousel-item {
-    height: 40rem;
-    width: 40rem;
-    margin: auto;
+    position: fixed;
+    height: 50rem;
+    margin-left: auto;
+    margin-right: auto;
     background-color: rgba(255, 255, 255, 0);
+}
 
+.form {
+    height: 21rem;
+    width: 20rem;
+    position: absolute;
+    display: block;
+    color: #ff7200;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.8) 50%);
+    padding: 20px;
 }
