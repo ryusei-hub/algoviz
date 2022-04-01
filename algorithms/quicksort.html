@@ -20,11 +20,11 @@
         var statusarray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         var statusarray1 = []
         var y = 0
-        var time = 0
+        var time = 1
         var quickstatus = []
         var a = 0
         var item2 = 0
-        var leftright = []
+        var leftright = [0]
 
         function generatebar() {
             for (x = 0; x < 20; x++) {
@@ -83,7 +83,7 @@
             return items;
         }
 
-        quickSort(nums, 0, nums.length - 1)
+
 
         function updatebar(statusarray2,color) {
             setTimeout(function () {
@@ -107,30 +107,36 @@
                     color[0].strokeColor = "white"
                     color[1].strokeColor = "white"
                     blocks = statusarray
-                    leftright[time][0] = blocks
-                    document.getElementById("sort").disabled=false;
+                    document.getElementById("stepsort").disabled=false;
                 }
-            }, 100)
+            }, 50)
         }
         function updat(){
-            if (time < 18) {
+            if (time < 19) {
                 console.log(time)
                 console.log(leftright)
                 y = 0
                 updatebar(quickstatus[time],leftright[time])
                 time++
             }else if(time == 19){
-
+                console.log(time)
+                console.log(leftright)
+                y = 0
+                updatebar(result,leftright[time])
             }
         }
         function updat1(){
-            if (time < 18) {
+            if (time <= 18) {
                 console.log(time)
                 console.log(leftright)
                 y = 0
                 updatebar(quickstatus[time],leftright[time])
                 time++
             }else if(time == 19){
+                console.log(time)
+                console.log(leftright)
+                y = 0
+                updatebar(result,leftright[time])
                 document.getElementById("stepsort").disabled=true;
             }
         }
@@ -138,28 +144,29 @@
             updat1()
         }
         globals.totalsort = function () {
-            setTimeout(updat,1000/4)
-            setTimeout(updat,10000/4)
-            setTimeout(updat,20000/4)
-            setTimeout(updat,30000/4)
-            setTimeout(updat,40000/4)
-            setTimeout(updat,50000/4)
-            setTimeout(updat,60000/4)
-            setTimeout(updat,70000/4)
-            setTimeout(updat,80000/4)
-            setTimeout(updat,90000/4)
-            setTimeout(updat,100000/4)
-            setTimeout(updat,110000/4)
-            setTimeout(updat,120000/4)
-            setTimeout(updat,130000/4)
-            setTimeout(updat,140000/4)
-            setTimeout(updat,150000/4)
-            setTimeout(updat,160000/4)
-            setTimeout(updat,170000/4)
-            setTimeout(updat,180000/4)
-            setTimeout(updat,190000/4)
+            setTimeout(updat,1000)
+            setTimeout(updat,3000)
+            setTimeout(updat,5000)
+            setTimeout(updat,7000)
+            setTimeout(updat,9000)
+            setTimeout(updat,11000)
+            setTimeout(updat,13000)
+            setTimeout(updat,15000)
+            setTimeout(updat,17000)
+            setTimeout(updat,19000)
+            setTimeout(updat,21000)
+            setTimeout(updat,23000)
+            setTimeout(updat,25000)
+            setTimeout(updat,27000)
+            setTimeout(updat,29000)
+            setTimeout(updat,31000)
+            setTimeout(updat,33000)
+            setTimeout(updat,35000)
+            setTimeout(updat,37000)
 
         }
+        var result = quickSort(nums, 0, nums.length - 1)
+        console.log(result)
         console.log(quickstatus)
     </script>
     <script type="text/javascript">
