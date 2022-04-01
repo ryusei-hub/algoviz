@@ -185,8 +185,8 @@
                             $param_email = $_POST["email"];
                             $param_fname = $_POST["fname"];
                             $param_sname = $_POST["sname"];
-                            $param_dob = $_POST["dob"];
-                            $param_phone = $_POST["phone"];
+                            $param_dob = !empty($_POST["dob"]) ? $_POST["dob"] : null;
+                            $param_phone = strval($_POST["phone"]);
 
                             $sql = "UPDATE users SET firstname = :fname, surname = :sname, email = :email, dob = :dob, phone = :phone WHERE name = :name";
                             $stmt = $conn->prepare($sql);
@@ -195,7 +195,7 @@
                             $stmt->bindParam(":fname", $param_fname, PDO::PARAM_STR);
                             $stmt->bindParam(":sname", $param_sname, PDO::PARAM_STR);
                             $stmt->bindParam(":dob", $param_dob, PDO::PARAM_STR);
-                            $stmt->bindParam(":phone", $param_phone, PDO::PARAM_INT);
+                            $stmt->bindParam(":phone", $param_phone, PDO::PARAM_STR);
                             $stmt->execute();
 
                             $conn = null;
@@ -210,10 +210,11 @@
                         ?>
                     </div>
                     <div style="transform: translateY(-8em);">
-                        <a class="buttn" style="padding: 1.85em" href="home.php">
+                        <a class="buttn" style="padding-top: 1.85em; padding-bottom: 1.85em; padding-left: 0.5em; padding-right: 0.5em;" href="home.php">
                             Return to Home
                         </a>
                         <button class="buttn" type="submit">Save Changes</button>
+                        <a class="buttn" style="padding-top: 1.85em; padding-bottom: 1.85em; padding-left: 0.5em; padding-right: 0.5em;" href="index.php">Log Out</a>
                     </div>
                 </form>
             </div>
