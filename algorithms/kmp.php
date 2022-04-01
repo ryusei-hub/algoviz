@@ -239,23 +239,15 @@
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                         <a class="dropdown-item" href="prim.php">Prim</a>
                         <a class="dropdown-item" href="kmp.php">KMP</a>
+                        <a class="dropdown-item" href="leealgorithm.php">Lee Algorithm</a>
+
                         <!-- <div class="dropdown-divider"></div>
                                   <a class="dropdown-item" href="#">Something else here</a> -->
                     </div>
                 </li>
-                <li class="nav-item active">
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="../forum/forum.php"
-                       style="font-size: 20px; font-family:Helvetica;">Forum</a>
-                </li>
             </ul>
 
         </div>
-        <!-- Searching barrrrr............. -->
-        <form class="form-inline">
-            <input aria-label="Search" class="form-control mr-sm-2" placeholder="Search" type="search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-        </form>
-
     </div>
 </nav>
 <canvas class="form" id="myCanvas" style="background-color: white"></canvas>
@@ -267,8 +259,8 @@
 </button>
 <!-- <img src="white.jpg" class="form2">  -->
 <div class="form-group">
-        <textarea class="form-control" id="exampleFormControlTextarea1"
-                  rows="3">Construct a DFA using the search string. For each state j, if match then go to the next state if not match then calculate the state should be in and go back.</textarea>
+        <textarea style="resize: none" class="form-control" id="exampleFormControlTextarea1"
+                  rows="10">Construct a DFA using the search string. For each state j, if it matches then go to the next state if it doesn't match then calculate the state it should be in and go back.</textarea>
 </div>
 
 

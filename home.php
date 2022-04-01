@@ -16,7 +16,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand " href="home.php" style="font-weight: bold;font-size:25px; color: #3271a8;">ALGOVIZ</a>
-    <a href="account.html">
+    <a href="account.php">
         <img class="user-icon" src="assets/icon.png" alt="user icon">
     </a>
     <a class="navbar-brand " href="account.php" style="font-weight: bold;font-size:25px; color: #3271a8;"
@@ -83,12 +83,6 @@
             </ul>
 
         </div>
-        <!-- Searching barrrrr............. -->
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-        </form>
-
     </div>
 </nav>
 

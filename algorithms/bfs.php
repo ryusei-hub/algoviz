@@ -252,23 +252,14 @@
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                         <a class="dropdown-item" href="prim.php">Prim</a>
                         <a class="dropdown-item" href="kmp.php">KMP</a>
+                        <a class="dropdown-item" href="leealgorithm.php">Lee Algorithm</a>
                         <!-- <div class="dropdown-divider"></div>
                               <a class="dropdown-item" href="#">Something else here</a> -->
                     </div>
                 </li>
-                <li class="nav-item active">
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="../forum/forum.php"
-                       style="font-size: 20px; font-family:Helvetica;">Forum</a>
-                </li>
             </ul>
 
         </div>
-        <!-- Searching barrrrr............. -->
-        <form class="form-inline">
-            <input aria-label="Search" class="form-control mr-sm-2" placeholder="Search" type="search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-        </form>
-
     </div>
 </nav>
 <canvas class="form" height=800 id="myCanvas" style="background-color: white" width=800></canvas>
@@ -283,8 +274,8 @@
 </button>
 <!-- <img src="white.jpg" class="form2">  -->
 <div class="form-group">
-        <textarea class="form-control" id="exampleFormControlTextarea1"
-                  rows="3">Repeat until queue is empty. Remove vertex v from queue, add to queue all unmarked vertices adjacent to v and mark them</textarea>
+        <textarea style="resize: none" class="form-control" id="exampleFormControlTextarea1"
+                  rows="10">Start traversing from a selected node and traverse the graph layerwise thus exploring the neighbour nodes (nodes which are directly connected to source node). Then move towards the next-level neighbour nodes. Repeat until the entire graph has been explored.</textarea>
 </div>
 
 

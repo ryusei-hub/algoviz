@@ -40,8 +40,8 @@
                         Trees
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="rbt.html">red black tree</a>
-                        <a class="dropdown-item" href="bst.html">binary search tree</a>
+                        <a class="dropdown-item" href="rbt.php">red black tree</a>
+                        <a class="dropdown-item" href="bst.php">binary search tree</a>
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
@@ -51,8 +51,8 @@
                         Sorts
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="mergesort.html">Merge sort</a>
-                        <a class="dropdown-item" href="quicksort.html">Quick sort</a>
+                        <a class="dropdown-item" href="mergesort.php">Merge sort</a>
+                        <a class="dropdown-item" href="quicksort.php">Quick sort</a>
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
@@ -62,8 +62,8 @@
                         Searching
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="bfs.html">breadth first search</a>
-                        <a class="dropdown-item" href="dfs.html">depth first search</a>
+                        <a class="dropdown-item" href="bfs.php">breadth first search</a>
+                        <a class="dropdown-item" href="dfs.php">depth first search</a>
                     </div>
                 </li>
                 <!-- LAST DROP DOWN /////////////////// -->
@@ -74,16 +74,12 @@
                         Others
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <a class="dropdown-item" href="prim.html">Prim</a>
-                        <a class="dropdown-item" href="kmp.html">KMP</a>
-                        <a class="dropdown-item" href="leealgorithm.html">Lee Algorithm</a>
+                        <a class="dropdown-item" href="prim.php">Prim</a>
+                        <a class="dropdown-item" href="kmp.php">KMP</a>
+                        <a class="dropdown-item" href="leealgorithm.php">Lee Algorithm</a>
                         <!-- <div class="dropdown-divider"></div>
                               <a class="dropdown-item" href="#">Something else here</a> -->
                     </div>
-                </li>
-                <li class="nav-item active">
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="../forum/forum.php"
-                       style="font-size: 20px; font-family:Helvetica;">Forum</a>
                 </li>
             </ul>
         </div>

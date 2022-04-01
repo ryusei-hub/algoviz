@@ -17,154 +17,158 @@
     <!-- Define inlined PaperScript associate it with myCanvas -->
     <script canvas="myCanvas" type="text/paperscript">
         var blocks = []
-        var nums = []
-        var statusarray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        var statusarray1 = []
-        var y = 0
-        var time = 0
-        var quickstatus = []
-        var a = 0
-        var item2 = 0
-        var leftright = []
+                var nums = []
+                var statusarray = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+                var statusarray1 = []
+                var y = 0
+                var time = 1
+                var quickstatus = []
+                var a = 0
+                var item2 = 0
+                var leftright = [0]
 
-        function generatebar() {
-            for (x = 0; x < 20; x++) {
-                var randomnum = Math.floor(Math.random() * 200) + 1;
-                var bar = Path.Rectangle(x * 30, 495, 24, -randomnum)
-                bar.strokeColor = "black"
-                blocks.push(bar)
-                nums.push(randomnum)
-            }
-        }
-
-        generatebar()
-
-        function swap(items, leftIndex, rightIndex) {
-            var temp = items[leftIndex];
-            items[leftIndex] = items[rightIndex];
-            items[rightIndex] = temp;
-        }
-
-        function partition(items, left, right) {
-
-            var pivot = items[Math.floor((right + left) / 2)], //middle element
-                i = left, //left pointer
-                j = right; //right pointer
-            while (i <= j) {
-                while (items[i] < pivot) {
-                    i++;
+                function generatebar() {
+                    for (x = 0; x < 20; x++) {
+                        var randomnum = Math.floor(Math.random() * 200) + 1;
+                        var bar = Path.Rectangle(x * 30, 495, 24, -randomnum)
+                        bar.strokeColor = "black"
+                        blocks.push(bar)
+                        nums.push(randomnum)
+                    }
                 }
-                while (items[j] > pivot) {
-                    j--;
+
+                generatebar()
+
+                function swap(items, leftIndex, rightIndex) {
+                    var temp = items[leftIndex];
+                    items[leftIndex] = items[rightIndex];
+                    items[rightIndex] = temp;
                 }
-                if (i <= j) {
-                    swap(items, i, j); //sawpping two elements
-                    i++;
-                    j--;
+
+                function partition(items, left, right) {
+
+                    var pivot = items[Math.floor((right + left) / 2)], //middle element
+                        i = left, //left pointer
+                        j = right; //right pointer
+                    while (i <= j) {
+                        while (items[i] < pivot) {
+                            i++;
+                        }
+                        while (items[j] > pivot) {
+                            j--;
+                        }
+                        if (i <= j) {
+                            swap(items, i, j); //sawpping two elements
+                            i++;
+                            j--;
+                        }
+                    }
+                    return i;
                 }
-            }
-            return i;
-        }
 
-        function quickSort(items, left, right) {
-            item2 = items;
-            leftright.push([blocks[left], blocks[right]])
-            quickstatus.push([item2[0], item2[1], item2[2], item2[3], item2[4], item2[5], item2[6], item2[7], item2[8], item2[9], item2[10], item2[11], item2[12], item2[13], item2[14], item2[15], item2[16], item2[17], item2[18], item2[19]])
-            var index;
-            if (items.length > 1) {
-                index = partition(items, left, right); //index returned from partition
-                if (left < index - 1) { //more elements on the left side of the pivot
-                    quickSort(items, left, index - 1);
+                function quickSort(items, left, right) {
+                    item2 = items;
+                    leftright.push([blocks[left],blocks[right]])
+                    quickstatus.push([item2[0], item2[1], item2[2], item2[3], item2[4], item2[5], item2[6], item2[7], item2[8], item2[9], item2[10], item2[11], item2[12], item2[13], item2[14], item2[15], item2[16], item2[17], item2[18], item2[19]])
+                    var index;
+                    if (items.length > 1) {
+                        index = partition(items, left, right); //index returned from partition
+                        if (left < index - 1) { //more elements on the left side of the pivot
+                            quickSort(items, left, index - 1);
+
+                        }
+                        if (index < right) { //more elements on the right side of the pivot
+                            quickSort(items, index, right);
+                        }
+                    }
+                    return items;
+                }
+
+
+
+                function updatebar(statusarray2,color) {
+                    setTimeout(function () {
+                        document.getElementById("stepsort").disabled=true;
+                        document.getElementById("sort").disabled=true;
+                        console.log(statusarray2)
+                        blocks[y].strokeColor = "white"
+                        var bar = Path.Rectangle(y * 30, 495, 24, -statusarray2[y])
+                        bar.strokeColor = "black"
+                        statusarray[y] = bar
+                        color[0].fillColor ="black"
+                        color[1].fillColor ="black"
+                        color[0].strokeColor = "black"
+                        color[1].strokeColor = "black"
+                        if (y < 19) {
+                            y++
+                            updatebar(statusarray2, color)
+                        } else {
+                            color[0].fillColor ="white"
+                            color[1].fillColor ="white"
+                            color[0].strokeColor = "white"
+                            color[1].strokeColor = "white"
+                            blocks = statusarray
+                            document.getElementById("stepsort").disabled=false;
+                        }
+                    }, 50)
+                }
+                function updat(){
+                    if (time < 19) {
+                        console.log(time)
+                        console.log(leftright)
+                        y = 0
+                        updatebar(quickstatus[time],leftright[time])
+                        time++
+                    }else if(time == 19){
+                        console.log(time)
+                        console.log(leftright)
+                        y = 0
+                        updatebar(result,leftright[time])
+                    }
+                }
+                function updat1(){
+                    if (time <= 18) {
+                        console.log(time)
+                        console.log(leftright)
+                        y = 0
+                        updatebar(quickstatus[time],leftright[time])
+                        time++
+                    }else if(time == 19){
+                        console.log(time)
+                        console.log(leftright)
+                        y = 0
+                        updatebar(result,leftright[time])
+                        document.getElementById("stepsort").disabled=true;
+                    }
+                }
+                globals.updategraph = function () {
+                    updat1()
+                }
+                globals.totalsort = function () {
+                    setTimeout(updat,1000)
+                    setTimeout(updat,3000)
+                    setTimeout(updat,5000)
+                    setTimeout(updat,7000)
+                    setTimeout(updat,9000)
+                    setTimeout(updat,11000)
+                    setTimeout(updat,13000)
+                    setTimeout(updat,15000)
+                    setTimeout(updat,17000)
+                    setTimeout(updat,19000)
+                    setTimeout(updat,21000)
+                    setTimeout(updat,23000)
+                    setTimeout(updat,25000)
+                    setTimeout(updat,27000)
+                    setTimeout(updat,29000)
+                    setTimeout(updat,31000)
+                    setTimeout(updat,33000)
+                    setTimeout(updat,35000)
+                    setTimeout(updat,37000)
 
                 }
-                if (index < right) { //more elements on the right side of the pivot
-                    quickSort(items, index, right);
-                }
-            }
-            return items;
-        }
-
-        quickSort(nums, 0, nums.length - 1)
-
-        function updatebar(statusarray2, color) {
-            setTimeout(function () {
-                document.getElementById("stepsort").disabled = true;
-                document.getElementById("sort").disabled = true;
-                console.log(statusarray2)
-                blocks[y].strokeColor = "white"
-                var bar = Path.Rectangle(y * 30, 495, 24, -statusarray2[y])
-                bar.strokeColor = "black"
-                statusarray[y] = bar
-                color[0].fillColor = "black"
-                color[1].fillColor = "black"
-                color[0].strokeColor = "black"
-                color[1].strokeColor = "black"
-                if (y < 19) {
-                    y++
-                    updatebar(statusarray2, color)
-                } else {
-                    color[0].fillColor = "white"
-                    color[1].fillColor = "white"
-                    color[0].strokeColor = "white"
-                    color[1].strokeColor = "white"
-                    blocks = statusarray
-                    leftright[time][0] = blocks
-                    document.getElementById("sort").disabled = false;
-                }
-            }, 100)
-        }
-
-        function updat() {
-            if (time < 18) {
-                console.log(time)
-                console.log(leftright)
-                y = 0
-                updatebar(quickstatus[time], leftright[time])
-                time++
-            } else if (time == 19) {
-
-            }
-        }
-
-        function updat1() {
-            if (time < 18) {
-                console.log(time)
-                console.log(leftright)
-                y = 0
-                updatebar(quickstatus[time], leftright[time])
-                time++
-            } else if (time == 19) {
-                document.getElementById("stepsort").disabled = true;
-            }
-        }
-
-        globals.updategraph = function () {
-            updat1()
-        }
-        globals.totalsort = function () {
-            setTimeout(updat, 1000)
-            setTimeout(updat, 10000)
-            setTimeout(updat, 20000)
-            setTimeout(updat, 30000)
-            setTimeout(updat, 40000)
-            setTimeout(updat, 50000)
-            setTimeout(updat, 60000)
-            setTimeout(updat, 70000)
-            setTimeout(updat, 80000)
-            setTimeout(updat, 90000)
-            setTimeout(updat, 100000)
-            setTimeout(updat, 110000)
-            setTimeout(updat, 120000)
-            setTimeout(updat, 130000)
-            setTimeout(updat, 140000)
-            setTimeout(updat, 150000)
-            setTimeout(updat, 160000)
-            setTimeout(updat, 170000)
-            setTimeout(updat, 180000)
-            setTimeout(updat, 190000)
-
-        }
-        console.log(quickstatus)
+                var result = quickSort(nums, 0, nums.length - 1)
+                console.log(result)
+                console.log(quickstatus)
     </script>
     <script type="text/javascript">
         window.globals = {}
@@ -249,22 +253,15 @@
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                         <a class="dropdown-item" href="prim.php">Prim</a>
                         <a class="dropdown-item" href="kmp.php">KMP</a>
+                        <a class="dropdown-item" href="leealgorithm.php">Lee Algorithm</a>
+
                         <!-- <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Something else here</a> -->
                     </div>
                 </li>
-                <li class="nav-item active">
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="../forum/forum.php"
-                       style="font-size: 20px; font-family:Helvetica;">Forum</a>
-                </li>
             </ul>
 
         </div>
-        <!-- Searching barrrrr............. -->
-        <form class="form-inline">
-            <input aria-label="Search" class="form-control mr-sm-2" placeholder="Search" type="search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-        </form>
 
     </div>
 </nav>
@@ -282,13 +279,13 @@
 
 <!-- <img src="white.jpg" class="form2">  -->
 <div class="form-group">
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">•random shuffle the array
-•partition so that,for some j
----entry a[j] is in place
----no large entry to the left of j
----no smaller entry to the right of j
-•sort each piece recursively
-•optimize running time for insertion sort of small arrays</textarea>
+    <textarea style="resize: none" class="form-control" id="exampleFormControlTextarea1" rows="10">•random shuffle the array
+• partition so that, for some j
+--- entry a[j] is in place
+--- no large entry to the left of j
+--- no smaller entry to the right of j
+• sort each piece recursively
+• optimize running time for insertion sort of small arrays</textarea>
 </div>
 
 

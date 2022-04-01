@@ -317,23 +317,15 @@
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                         <a class="dropdown-item" href="prim.php">Prim</a>
                         <a class="dropdown-item" href="kmp.php">KMP</a>
+                        <a class="dropdown-item" href="leealgorithm.php">Lee Algorithm</a>
+
                         <!-- <div class="dropdown-divider"></div>
                               <a class="dropdown-item" href="#">Something else here</a> -->
                     </div>
                 </li>
-                <li class="nav-item active">
-                    <a aria-expanded="false" aria-haspopup="true" class="nav-link" href="../forum/forum.php"
-                       style="font-size: 20px; font-family:Helvetica;">Forum</a>
-                </li>
             </ul>
 
         </div>
-        <!-- Searching barrrrr............. -->
-        <form class="form-inline">
-            <input aria-label="Search" class="form-control mr-sm-2" placeholder="Search" type="search">
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-        </form>
-
     </div>
 </nav>
 <canvas class="form" height=500 id="myCanvas" style="background-color: white" width=500></canvas>
@@ -349,8 +341,9 @@
 
 <!-- <img src="white.jpg" class="form2">  -->
 <div class="form-group">
-        <textarea class="form-control" id="exampleFormControlTextarea1"
-                  rows="3">Start with vertex 0 and greedily grow tree T. Add to T the min weight edge with exactly one endpoint in T. Repeat until V-1 edges</textarea>
+        <textarea style="resize: none" class="form-control" id="exampleFormControlTextarea1"
+                  rows="10">Start from one vertex and keep adding edges with the lowest weight until we reach our goal. The steps for implementing Prim's algorithm are as follows: Initialize the minimum spanning tree with a vertex chosen at random. Find all the edges that connect the tree to new vertices, find the minimum and add it to the tree. Keep repeating this last step until we get a minimum spanning tree.
+        </textarea>
 </div>
 
 
