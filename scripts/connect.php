@@ -2,8 +2,8 @@
 
 function Connect()
 {
-    $database_host = "localhost";
-    $database_user = "root";
+    $database_host = "dbhost.cs.man.ac.uk";
+    $database_user = "m59511md";
     $database_pass = "LeqNGDvbT6VEyF";
     $database_name = "m59511md";
 

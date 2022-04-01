@@ -78,10 +78,7 @@
                     </div>
                 </li>
                 <!-- //FORUM BUTTON -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="forum/forum.php" aria-haspopup="true" aria-expanded="false"
-                       style="font-size: 20px; font-family:Helvetica;">Forum</a>
-                </li>
+
 
             </ul>
 
