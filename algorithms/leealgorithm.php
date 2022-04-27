@@ -7,13 +7,13 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <link href="../stylesheets/index.css" rel="stylesheet" type="text/css">
-    <link href="../stylesheets/LeeAlgorithm.css" rel="stylesheet" type="text/css"/>
+    <link href="../stylesheets/leealgorithm.css" rel="stylesheet" type="text/css"/>
     <!-- Bootstrap CSS -->
     <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
 </head>
 
-<body style="background:linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(assets/two.jpg);">
+<body style="background:linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../assets/two.jpg);">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand " href="../home.php" style="font-weight: bold;font-size:25px; color: #3271a8;">ALGOVIZ</a>
     <a href="../account.php">
@@ -52,7 +52,7 @@
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                         <a class="dropdown-item" href="mergesort.php">Merge sort</a>
-                        <a class="dropdown-item" href="quicksortv2.html">Quick sort</a>
+                        <a class="dropdown-item" href="quicksort.php">Quick sort</a>
                     </div>
                 </li>
                 <li class="nav-item active dropdown">
@@ -75,7 +75,7 @@
                     </a>
                     <div aria-labelledby="navbarDropdown" class="dropdown-menu">
                         <a class="dropdown-item" href="prim.php">Prim</a>
-                        <a class="dropdown-item" href="KMP.html">KMP</a>
+                        <a class="dropdown-item" href="kmp.php">KMP</a>
                         <!-- <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Something else here</a> -->
                     </div>
@@ -101,12 +101,12 @@
         <!-- <button id="continue" onclick="continueSearch()">Continue</button> -->
     </div>
     <div class="form-group">
-        <p class="form-control" rows="10">Construct a DFA using the search string. For each state j, if match then go to
-            the next state if not match then calculate the state should be in and go back.</p>
+    <textarea style="resize: none" class="form-control" id="exampleFormControlTextarea1"
+              rows="10">The algorithm is a breadth-first based algorithm that uses queues to store the steps. It usually uses the following steps: Choose a starting point and add it to the queue. Add the valid neighboring cells to the queue. Remove the position you are on from the queue and continue to the next element. Repeat steps 2 and 3 until the queue is empty.</textarea>
     </div>
 </div>
 
-<script src="../scripts/LeeAlgorithm.js"></script>
+<script src="../scripts/leealgorithm.js"></script>
 <script crossorigin="anonymous"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
